@@ -30,8 +30,7 @@
     
         <h2><span class="attribs"><span class="type-signature"></span></span>App<span class="signature">()</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">Primary entry point to PicoGL. An app will store all parts of the WebGL
-    state.</div>
+            <div class="class-description">PicoGL的主入口。App会存储所有的WebGL状态。</div>
         
     
 </header>
@@ -107,7 +106,7 @@
 
             
 
-            <td class="description last">The canvas on which this app drawing.</td>
+            <td class="description last">当前app绘制的目标canvas。</td>
         </tr>
 
     
@@ -130,7 +129,7 @@
 
             
 
-            <td class="description last">The WebGL context.</td>
+            <td class="description last">WebGL上下文。</td>
         </tr>
 
     
@@ -153,7 +152,7 @@
 
             
 
-            <td class="description last">The width of the drawing surface.</td>
+            <td class="description last">当前绘制平面的宽度。</td>
         </tr>
 
     
@@ -176,7 +175,7 @@
 
             
 
-            <td class="description last">The height of the drawing surface.</td>
+            <td class="description last">当前绘制平面的高度。</td>
         </tr>
 
     
@@ -199,7 +198,7 @@
 
             
 
-            <td class="description last">Whether the EXT_color_buffer_float extension is enabled.</td>
+            <td class="description last">EXT_color_buffer_float扩展是否可用。</td>
         </tr>
 
     
@@ -222,7 +221,7 @@
 
             
 
-            <td class="description last">Whether the OES_texture_float_linear extension is enabled.</td>
+            <td class="description last">OES_texture_float_linear扩展是否可用。</td>
         </tr>
 
     
@@ -245,7 +244,7 @@
 
             
 
-            <td class="description last">Whether the WEBGL_compressed_texture_s3tc extension is enabled.</td>
+            <td class="description last">WEBGL_compressed_texture_s3tc扩展是否可用。</td>
         </tr>
 
     
@@ -268,7 +267,7 @@
 
             
 
-            <td class="description last">Whether the WEBGL_compressed_texture_s3tc_srgb extension is enabled.</td>
+            <td class="description last">WEBGL_compressed_texture_s3tc_srgb扩展是否可用。</td>
         </tr>
 
     
@@ -291,7 +290,7 @@
 
             
 
-            <td class="description last">Whether the WEBGL_compressed_texture_etc extension is enabled.</td>
+            <td class="description last">WEBGL_compressed_texture_etc扩展是否可用。</td>
         </tr>
 
     
@@ -314,7 +313,7 @@
 
             
 
-            <td class="description last">Whether the WEBGL_compressed_texture_astc extension is enabled.</td>
+            <td class="description last">WEBGL_compressed_texture_astc扩展是否可用。</td>
         </tr>
 
     
@@ -337,7 +336,7 @@
 
             
 
-            <td class="description last">Whether the WEBGL_compressed_texture_pvrtc extension is enabled.</td>
+            <td class="description last">WEBGL_compressed_texture_pvrtc扩展是否可用。</td>
         </tr>
 
     
@@ -360,7 +359,7 @@
 
             
 
-            <td class="description last">Tracked GL state.</td>
+            <td class="description last">跟踪的GL状态。</td>
         </tr>
 
     
@@ -422,7 +421,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line61">line 61</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line60">line 60</a>
     </li></ul></dd>
     
 
@@ -484,8 +483,7 @@
 
 
 <div class="description">
-    Enable the WEBGL_compressed_texture_astc extension, which allows the following enums to
-        be used as texture formats:
+    启用 WEBGL_compressed_texture_astc 扩展。该扩展允许使用以下枚举的贴图格式：
         
         <ul>
           <li>PicoGL.COMPRESSED_RGBA_ASTC_4x4_KHR
@@ -560,7 +558,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line812">line 812</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line801">line 801</a>
     </li></ul></dd>
     
 
@@ -587,7 +585,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App 对象。
 </div>
 
 
@@ -624,7 +622,7 @@
 
 
 <div class="description">
-    Enable blending.
+    开启混合
 </div>
 
 
@@ -668,7 +666,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line391">line 391</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line390">line 390</a>
     </li></ul></dd>
     
 
@@ -695,7 +693,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App 对象。
 </div>
 
 
@@ -732,7 +730,7 @@
 
 
 <div class="description">
-    Set the blend function. E.g. app.blendFunc(PicoGL.ONE, PicoGL.ONE_MINUS_SRC_ALPHA).
+    设定混合模式。例如：app.blendFunc(PicoGL.ONE, PicoGL.ONE_MINUS_SRC_ALPHA)。
 </div>
 
 
@@ -784,7 +782,7 @@
 
             
 
-            <td class="description last">The source blending weight.</td>
+            <td class="description last">混合源权重。</td>
         </tr>
 
     
@@ -807,7 +805,7 @@
 
             
 
-            <td class="description last">The destination blending weight.</td>
+            <td class="description last">混合目标权重。</td>
         </tr>
 
     
@@ -848,7 +846,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line417">line 417</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line416">line 416</a>
     </li></ul></dd>
     
 
@@ -875,7 +873,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App 对象。
 </div>
 
 
@@ -912,8 +910,8 @@
 
 
 <div class="description">
-    Set the blend function, with separate weighting for color and alpha channels.
-        E.g. app.blendFuncSeparate(PicoGL.ONE, PicoGL.ONE_MINUS_SRC_ALPHA, PicoGL.ONE, PicoGL.ONE).
+    设定混合模式，同时为颜色和 alpha 通道分别设置混合权重。
+        例如：app.blendFuncSeparate(PicoGL.ONE, PicoGL.ONE_MINUS_SRC_ALPHA, PicoGL.ONE, PicoGL.ONE)。
 </div>
 
 
@@ -965,7 +963,7 @@
 
             
 
-            <td class="description last">The source blending weight for the RGB channels.</td>
+            <td class="description last">混合源 RGB 通道权重。</td>
         </tr>
 
     
@@ -988,7 +986,7 @@
 
             
 
-            <td class="description last">The destination blending weight for the RGB channels.</td>
+            <td class="description last">混合目标 RGB 通道权重。</td>
         </tr>
 
     
@@ -1011,7 +1009,7 @@
 
             
 
-            <td class="description last">The source blending weight for the alpha channel.</td>
+            <td class="description last">混合源 alpha 通道权重。</td>
         </tr>
 
     
@@ -1034,7 +1032,7 @@
 
             
 
-            <td class="description last">The destination blending weight for the alpha channel.</td>
+            <td class="description last">混合目标 alpha 通道权重。</td>
         </tr>
 
     
@@ -1075,7 +1073,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line434">line 434</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line433">line 433</a>
     </li></ul></dd>
     
 
@@ -1102,7 +1100,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App 对象。
 </div>
 
 
@@ -1139,7 +1137,7 @@
 
 
 <div class="description">
-    Copy data from framebuffer attached to READ_FRAMEBUFFER to framebuffer attached to DRAW_FRAMEBUFFER.
+    从附加到READ_FRAMEBUFFER的framebuffer复制数据到绑定到DRAW_FRAMEBUFFER的framebuffer。
 </div>
 
 
@@ -1201,7 +1199,7 @@
 
             
 
-            <td class="description last">Write mask (e.g. PicoGL.COLOR_BUFFER_BIT).</td>
+            <td class="description last">写掩码（例如：PicoGL.COLOR_BUFFER_BIT）。</td>
         </tr>
 
     
@@ -1656,7 +1654,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line296">line 296</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line295">line 295</a>
     </li></ul></dd>
     
 
@@ -1683,7 +1681,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App 对象。
 </div>
 
 
@@ -1720,7 +1718,7 @@
 
 
 <div class="description">
-    Clear the canvas
+    清空画布。
 </div>
 
 
@@ -1764,7 +1762,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line214">line 214</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line213">line 213</a>
     </li></ul></dd>
     
 
@@ -1791,7 +1789,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App对象。
 </div>
 
 
@@ -1828,7 +1826,7 @@
 
 
 <div class="description">
-    Set the clear color.
+    设定清除颜色。
 </div>
 
 
@@ -1880,7 +1878,7 @@
 
             
 
-            <td class="description last">Red channel.</td>
+            <td class="description last">红色通道。</td>
         </tr>
 
     
@@ -1903,7 +1901,7 @@
 
             
 
-            <td class="description last">Green channel.</td>
+            <td class="description last">绿色通道。</td>
         </tr>
 
     
@@ -1926,7 +1924,7 @@
 
             
 
-            <td class="description last">Blue channel.</td>
+            <td class="description last">蓝色通道。</td>
         </tr>
 
     
@@ -1949,7 +1947,7 @@
 
             
 
-            <td class="description last">Alpha channel.</td>
+            <td class="description last">Alpha通道。</td>
         </tr>
 
     
@@ -1990,7 +1988,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line188">line 188</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line187">line 187</a>
     </li></ul></dd>
     
 
@@ -2017,7 +2015,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App对象。
 </div>
 
 
@@ -2055,7 +2053,7 @@
 
 <div class="description">
     Set the clear mask bits to use when calling clear().
-        E.g. app.clearMask(PicoGL.COLOR_BUFFER_BIT).
+        示例：app.clearMask(PicoGL.COLOR_BUFFER_BIT)。
 </div>
 
 
@@ -2148,7 +2146,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line202">line 202</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line201">line 201</a>
     </li></ul></dd>
     
 
@@ -2175,7 +2173,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App对象。
 </div>
 
 
@@ -2265,7 +2263,7 @@
 
             
 
-            <td class="description last">Red channel.</td>
+            <td class="description last">红色通道。</td>
         </tr>
 
     
@@ -2288,7 +2286,7 @@
 
             
 
-            <td class="description last">Green channel.</td>
+            <td class="description last">绿色通道。</td>
         </tr>
 
     
@@ -2311,7 +2309,7 @@
 
             
 
-            <td class="description last">Blue channel.</td>
+            <td class="description last">蓝色通道。</td>
         </tr>
 
     
@@ -2334,7 +2332,7 @@
 
             
 
-            <td class="description last">Alpha channel.</td>
+            <td class="description last">Alpha通道。</td>
         </tr>
 
     
@@ -2375,7 +2373,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line172">line 172</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line171">line 171</a>
     </li></ul></dd>
     
 
@@ -2402,7 +2400,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App对象。
 </div>
 
 
@@ -2439,7 +2437,7 @@
 
 
 <div class="description">
-    Create a cubemap.
+    创建一个 Cubemap（立方体贴图纹理）。
 </div>
 
 
@@ -2491,7 +2489,7 @@
 
             
 
-            <td class="description last">Texture options.
+            <td class="description last">贴图选项。
                 <h6>Properties</h6>
                 
 
@@ -2554,8 +2552,8 @@
                 </td>
             
 
-            <td class="description last">The image data for the negative X direction.
-                Can be any format that would be accepted by texImage2D.</td>
+            <td class="description last">负X方向的图像数据。
+                可以是能够被 texImage2D 接受的任何类型。</td>
         </tr>
 
     
@@ -2595,8 +2593,8 @@
                 </td>
             
 
-            <td class="description last">The image data for the positive X direction.
-                Can be any format that would be accepted by texImage2D.</td>
+            <td class="description last">正X方向的图像数据。
+                可以是能够被 texImage2D 接受的任何类型。</td>
         </tr>
 
     
@@ -2636,8 +2634,8 @@
                 </td>
             
 
-            <td class="description last">The image data for the negative Y direction.
-                Can be any format that would be accepted by texImage2D.</td>
+            <td class="description last">负Y方向的图像数据。
+                可以是能够被 texImage2D 接受的任何类型。</td>
         </tr>
 
     
@@ -2677,8 +2675,8 @@
                 </td>
             
 
-            <td class="description last">The image data for the positive Y direction.
-                Can be any format that would be accepted by texImage2D.</td>
+            <td class="description last">正Y方向的图像数据。
+                可以是能够被 texImage2D 接受的任何类型。</td>
         </tr>
 
     
@@ -2718,8 +2716,8 @@
                 </td>
             
 
-            <td class="description last">The image data for the negative Z direction.
-                Can be any format that would be accepted by texImage2D.</td>
+            <td class="description last">负Z方向的图像数据。
+                可以是能够被 texImage2D 接受的任何类型。</td>
         </tr>
 
     
@@ -2759,8 +2757,8 @@
                 </td>
             
 
-            <td class="description last">The image data for the positive Z direction.
-                Can be any format that would be accepted by texImage2D.</td>
+            <td class="description last">正Z方向的图像数据。
+                可以是能够被 texImage2D 接受的任何类型。</td>
         </tr>
 
     
@@ -3297,7 +3295,7 @@
                 </td>
             
 
-            <td class="description last">Base mipmap level.</td>
+            <td class="description last">最小 mipmap 等级。</td>
         </tr>
 
     
@@ -3334,7 +3332,7 @@
                 </td>
             
 
-            <td class="description last">Maximum mipmap level.</td>
+            <td class="description last">最大 mipmap 等级。</td>
         </tr>
 
     
@@ -3371,7 +3369,7 @@
                 </td>
             
 
-            <td class="description last">Mimimum level of detail.</td>
+            <td class="description last">最小 LOD 细节等级。</td>
         </tr>
 
     
@@ -3408,7 +3406,7 @@
                 </td>
             
 
-            <td class="description last">Maximum level of detail.</td>
+            <td class="description last">最大 LOD 细节等级。</td>
         </tr>
 
     
@@ -3494,7 +3492,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1246">line 1246</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1232">line 1232</a>
     </li></ul></dd>
     
 
@@ -3521,7 +3519,7 @@
 
         
 <div class="param-desc">
-    New Cubemap object.
+    新的立方体贴图纹理对象
 </div>
 
 
@@ -3558,9 +3556,8 @@
 
 
 <div class="description">
-    Create a DrawCall. A DrawCall manages the state associated with
-        a WebGL draw call including a program and associated vertex data, textures,
-        uniforms and uniform blocks.
+    创建 DrawCall。每个 DrawCall 对象管理一次 WebGL DrawCall 关
+        联的 attributes、uniforms 和 textures 的程序和值。
 </div>
 
 
@@ -3628,7 +3625,7 @@
                 </td>
             
 
-            <td class="description last">The program to use for this DrawCall.</td>
+            <td class="description last">本次 DrawCall 使用的程序。</td>
         </tr>
 
     
@@ -3663,7 +3660,7 @@
                 </td>
             
 
-            <td class="description last">Vertex data to use for drawing.</td>
+            <td class="description last">绘制使用的顶点数组。</td>
         </tr>
 
     
@@ -3702,7 +3699,7 @@
                 </td>
             
 
-            <td class="description last">Type of primitive to draw.</td>
+            <td class="description last">绘制的片元类型。</td>
         </tr>
 
     
@@ -3743,7 +3740,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1306">line 1306</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1291">line 1291</a>
     </li></ul></dd>
     
 
@@ -3770,7 +3767,7 @@
 
         
 <div class="param-desc">
-    New DrawCall object.
+    新的 DrawCall 对象。
 </div>
 
 
@@ -3807,7 +3804,7 @@
 
 
 <div class="description">
-    Create a framebuffer.
+    创建一个帧缓冲。
 </div>
 
 
@@ -3851,7 +3848,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1270">line 1270</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1256">line 1256</a>
     </li></ul></dd>
     
 
@@ -3878,7 +3875,7 @@
 
         
 <div class="param-desc">
-    New Framebuffer object.
+    新的帧缓冲对象。
 </div>
 
 
@@ -3915,7 +3912,7 @@
 
 
 <div class="description">
-    Create an index buffer.
+    创建索引缓冲。
 </div>
 
 
@@ -3983,7 +3980,7 @@
                 </td>
             
 
-            <td class="description last">The data type stored in the index buffer.</td>
+            <td class="description last">存储在索引缓冲中的数据类型。</td>
         </tr>
 
     
@@ -4018,7 +4015,7 @@
                 </td>
             
 
-            <td class="description last">Number of elements per primitive.</td>
+            <td class="description last">每片元元素数量。</td>
         </tr>
 
     
@@ -4053,7 +4050,7 @@
                 </td>
             
 
-            <td class="description last">Index buffer data.</td>
+            <td class="description last">索引缓冲数据。</td>
         </tr>
 
     
@@ -4092,7 +4089,7 @@
                 </td>
             
 
-            <td class="description last">Buffer usage.</td>
+            <td class="description last">缓冲用途。</td>
         </tr>
 
     
@@ -4133,7 +4130,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1042">line 1042</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1029">line 1029</a>
     </li></ul></dd>
     
 
@@ -4160,7 +4157,7 @@
 
         
 <div class="param-desc">
-    New VertexBuffer object.
+    新的索引缓冲对象。
 </div>
 
 
@@ -4383,7 +4380,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1028">line 1028</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1015">line 1015</a>
     </li></ul></dd>
     
 
@@ -4447,7 +4444,7 @@
 
 
 <div class="description">
-    Create a program.
+    创建一个程序。
 </div>
 
 
@@ -4512,7 +4509,7 @@
 
             
 
-            <td class="description last">Vertex shader object or source code.</td>
+            <td class="description last">顶点着色器对象或源码。</td>
         </tr>
 
     
@@ -4546,7 +4543,7 @@
 
             
 
-            <td class="description last">Fragment shader object or source code.</td>
+            <td class="description last">片元着色器对象或源码</td>
         </tr>
 
     
@@ -4620,7 +4617,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line964">line 964</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line952">line 952</a>
     </li></ul></dd>
     
 
@@ -4647,7 +4644,7 @@
 
         
 <div class="param-desc">
-    New Program object.
+    新的程序对象。
 </div>
 
 
@@ -4684,7 +4681,7 @@
 
 
 <div class="description">
-    Create a query.
+    创建一个查询。
 </div>
 
 
@@ -4736,7 +4733,7 @@
 
             
 
-            <td class="description last">Information to query.</td>
+            <td class="description last">需要查询的信息。</td>
         </tr>
 
     
@@ -4777,7 +4774,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1281">line 1281</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1267">line 1267</a>
     </li></ul></dd>
     
 
@@ -4804,7 +4801,7 @@
 
         
 <div class="param-desc">
-    New Query object.
+    新的查询对象。
 </div>
 
 
@@ -4841,7 +4838,7 @@
 
 
 <div class="description">
-    Create a renderbuffer.
+    创建一个渲染缓冲。
 </div>
 
 
@@ -4909,7 +4906,7 @@
                 </td>
             
 
-            <td class="description last">Renderbuffer width.</td>
+            <td class="description last">渲染缓冲宽度。</td>
         </tr>
 
     
@@ -4944,7 +4941,7 @@
                 </td>
             
 
-            <td class="description last">Renderbuffer height.</td>
+            <td class="description last">渲染缓冲高度。</td>
         </tr>
 
     
@@ -4979,7 +4976,7 @@
                 </td>
             
 
-            <td class="description last">Internal arrangement of the renderbuffer data.</td>
+            <td class="description last">渲染缓冲数据的内部排列方式。</td>
         </tr>
 
     
@@ -5018,7 +5015,7 @@
                 </td>
             
 
-            <td class="description last">Number of MSAA samples.</td>
+            <td class="description last">MSAA 采样数。</td>
         </tr>
 
     
@@ -5059,7 +5056,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1260">line 1260</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1246">line 1246</a>
     </li></ul></dd>
     
 
@@ -5086,7 +5083,7 @@
 
         
 <div class="param-desc">
-    New Renderbuffer object.
+    新的渲染缓冲对象。
 </div>
 
 
@@ -5123,8 +5120,7 @@
 
 
 <div class="description">
-    Create a shader. Creating a shader separately from a program allows for
-        shader reuse.
+    创建一个着色器。使用 Program 创建着色器可以使着色器得到重用。
 </div>
 
 
@@ -5176,7 +5172,7 @@
 
             
 
-            <td class="description last">Shader type.</td>
+            <td class="description last">着色器类型。</td>
         </tr>
 
     
@@ -5199,7 +5195,7 @@
 
             
 
-            <td class="description last">Shader source.</td>
+            <td class="description last">着色器源码。</td>
         </tr>
 
     
@@ -5240,7 +5236,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line977">line 977</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line964">line 964</a>
     </li></ul></dd>
     
 
@@ -5267,7 +5263,7 @@
 
         
 <div class="param-desc">
-    New Shader object.
+    新的着色器对象。
 </div>
 
 
@@ -5304,11 +5300,11 @@
 
 
 <div class="description">
-    Create a 2D texture. Can be used in several ways depending on the type of texture data:
+    创建一个 2D 贴图纹理。根据传入参数类型不同有多种使用方式：
         <ul>
-            <li><b>app.createTexture2D(ImageElement, options)</b>: Create texture from a DOM image element.
-            <li><b>app.createTexture2D(TypedArray, width, height, options)</b>: Create texture from a typed array.
-            <li><b>app.createTexture2D(width, height, options)</b>: Create empty texture.
+            <li><b>app.createTexture2D(ImageElement, options)</b>: 从 DOM 图片元素对象创建贴图。
+            <li><b>app.createTexture2D(TypedArray, width, height, options)</b>: 从类型化数组创建贴图。
+            <li><b>app.createTexture2D(width, height, options)</b>: 创建一个空贴图。
         </ul>
 </div>
 
@@ -6163,7 +6159,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1098">line 1098</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1084">line 1084</a>
     </li></ul></dd>
     
 
@@ -6227,7 +6223,7 @@
 
 
 <div class="description">
-    Create a 3D texture.
+    创建 3D 贴图。
 </div>
 
 
@@ -7103,7 +7099,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1193">line 1193</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1179">line 1179</a>
     </li></ul></dd>
     
 
@@ -7167,7 +7163,7 @@
 
 
 <div class="description">
-    Create a 2D texture array.
+    创建 2D 纹理数组。
 </div>
 
 
@@ -8043,7 +8039,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1148">line 1148</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1134">line 1134</a>
     </li></ul></dd>
     
 
@@ -8107,7 +8103,7 @@
 
 
 <div class="description">
-    Create a timer.
+    创建一个 Timer。
 </div>
 
 
@@ -8151,7 +8147,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1291">line 1291</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1277">line 1277</a>
     </li></ul></dd>
     
 
@@ -8178,7 +8174,7 @@
 
         
 <div class="param-desc">
-    New Timer object.
+    新的 Timer 对象。
 </div>
 
 
@@ -8215,7 +8211,7 @@
 
 
 <div class="description">
-    Create a transform feedback object.
+    创建一个变换回传（Transform Feedback）对象。
 </div>
 
 
@@ -8259,7 +8255,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line997">line 997</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line984">line 984</a>
     </li></ul></dd>
     
 
@@ -8286,7 +8282,7 @@
 
         
 <div class="param-desc">
-    New TransformFeedback object.
+    新的变换回传（Transform Feedback）对象。
 </div>
 
 
@@ -8323,9 +8319,8 @@
 
 
 <div class="description">
-    Create a uniform buffer in std140 layout. NOTE: FLOAT_MAT2, FLOAT_MAT3x2, FLOAT_MAT4x2,
-        FLOAT_MAT3, FLOAT_MAT2x3, FLOAT_MAT4x3 are supported, but must be manually padded to
-        4-float column alignment by the application!
+    创建一个 std140 布局的 uniform 缓冲。注意：FLOAT_MAT2, FLOAT_MAT3x2, FLOAT_MAT4x2,
+        FLOAT_MAT3, FLOAT_MAT2x3, FLOAT_MAT4x3 都是支持的，但这些类型必须手动添加 4-float 列对齐。
 </div>
 
 
@@ -8474,7 +8469,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1057">line 1057</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1043">line 1043</a>
     </li></ul></dd>
     
 
@@ -8538,7 +8533,7 @@
 
 
 <div class="description">
-    Create a vertex array.
+    创建一个顶点数组。
 </div>
 
 
@@ -8582,7 +8577,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line987">line 987</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line974">line 974</a>
     </li></ul></dd>
     
 
@@ -8609,7 +8604,7 @@
 
         
 <div class="param-desc">
-    New VertexArray object.
+    新的顶点数组对象。
 </div>
 
 
@@ -8646,7 +8641,7 @@
 
 
 <div class="description">
-    Create a vertex buffer.
+    创建一个顶点缓冲。
 </div>
 
 
@@ -8714,7 +8709,7 @@
                 </td>
             
 
-            <td class="description last">The data type stored in the vertex buffer.</td>
+            <td class="description last">存储在顶点缓冲中的数据类型。</td>
         </tr>
 
     
@@ -8749,7 +8744,7 @@
                 </td>
             
 
-            <td class="description last">Number of elements per vertex.</td>
+            <td class="description last">每顶点元素数量。</td>
         </tr>
 
     
@@ -8827,7 +8822,7 @@
                 </td>
             
 
-            <td class="description last">Buffer usage.</td>
+            <td class="description last">缓冲用途。</td>
         </tr>
 
     
@@ -8868,7 +8863,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1012">line 1012</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line999">line 999</a>
     </li></ul></dd>
     
 
@@ -8895,7 +8890,7 @@
 
         
 <div class="param-desc">
-    New VertexBuffer object.
+    新的顶点缓冲对象。
 </div>
 
 
@@ -8932,7 +8927,7 @@
 
 
 <div class="description">
-    Enable backface culling.
+    启用背面剔除。
 </div>
 
 
@@ -8976,7 +8971,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line643">line 643</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line635">line 635</a>
     </li></ul></dd>
     
 
@@ -9003,7 +8998,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App 对象。
 </div>
 
 
@@ -9040,8 +9035,8 @@
 
 
 <div class="description">
-    Switch back to the default framebuffer for drawing (i.e. draw to the screen).
-        Note that this method resets the viewport to match the default framebuffer.
+    切换回默认的绘图framebuffer（例如：绘制到屏幕）。
+        注意这个方法会重置视口以适应默认framebuffer。
 </div>
 
 
@@ -9085,7 +9080,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line255">line 255</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line254">line 254</a>
     </li></ul></dd>
     
 
@@ -9112,7 +9107,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App对象。
 </div>
 
 
@@ -9149,7 +9144,7 @@
 
 
 <div class="description">
-    Switch back to the default framebuffer for reading (i.e. read from the screen).
+    切换回默认读取framebuffer（例如：从屏幕读取）。
 </div>
 
 
@@ -9193,7 +9188,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line270">line 270</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line269">line 269</a>
     </li></ul></dd>
     
 
@@ -9220,7 +9215,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App 对象。
 </div>
 
 
@@ -9257,7 +9252,7 @@
 
 
 <div class="description">
-    Set the viewport to the full canvas.
+    设定视口大小与整个画布大小一致。
 </div>
 
 
@@ -9301,7 +9296,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line931">line 931</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line919">line 919</a>
     </li></ul></dd>
     
 
@@ -9328,7 +9323,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App 对象。
 </div>
 
 
@@ -9365,7 +9360,7 @@
 
 
 <div class="description">
-    Set the depth test function. E.g. app.depthFunc(PicoGL.LEQUAL).
+    设定深度测试方法。例如：app.depthFunc(PicoGL.LEQUAL).
 </div>
 
 
@@ -9417,7 +9412,7 @@
 
             
 
-            <td class="description last">The depth testing function to use.</td>
+            <td class="description last">使用的深度测试方法。</td>
         </tr>
 
     
@@ -9458,7 +9453,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line379">line 379</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line378">line 378</a>
     </li></ul></dd>
     
 
@@ -9485,7 +9480,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App 对象。
 </div>
 
 
@@ -9522,7 +9517,7 @@
 
 
 <div class="description">
-    Enable or disable writing to the depth buffer.
+    开启或关闭写入深度缓冲。
 </div>
 
 
@@ -9574,7 +9569,7 @@
 
             
 
-            <td class="description last">The depth mask.</td>
+            <td class="description last">深度 mask。</td>
         </tr>
 
     
@@ -9615,7 +9610,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line366">line 366</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line365">line 365</a>
     </li></ul></dd>
     
 
@@ -9642,7 +9637,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App 对象。
 </div>
 
 
@@ -9679,7 +9674,7 @@
 
 
 <div class="description">
-    Set the depth range.
+    设定深度范围。
 </div>
 
 
@@ -9731,7 +9726,7 @@
 
             
 
-            <td class="description last">Minimum depth value.</td>
+            <td class="description last">最小深度值。</td>
         </tr>
 
     
@@ -9754,7 +9749,7 @@
 
             
 
-            <td class="description last">Maximum depth value.</td>
+            <td class="description last">最大深度值。</td>
         </tr>
 
     
@@ -9795,7 +9790,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line329">line 329</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line328">line 328</a>
     </li></ul></dd>
     
 
@@ -9822,7 +9817,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App 对象。
 </div>
 
 
@@ -9859,7 +9854,7 @@
 
 
 <div class="description">
-    Enable depth testing.
+    开启深度测试。
 </div>
 
 
@@ -9903,7 +9898,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line341">line 341</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line340">line 340</a>
     </li></ul></dd>
     
 
@@ -9930,7 +9925,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App 对象。
 </div>
 
 
@@ -9967,7 +9962,7 @@
 
 
 <div class="description">
-    Disable backface culling.
+    禁用背面剔除。
 </div>
 
 
@@ -10011,7 +10006,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line655">line 655</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line647">line 647</a>
     </li></ul></dd>
     
 
@@ -10038,7 +10033,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App 对象。
 </div>
 
 
@@ -10075,7 +10070,7 @@
 
 
 <div class="description">
-    Bind a draw framebuffer to the WebGL context.
+    为WebGL上下文绑定一个绘图framebuffer。
 </div>
 
 
@@ -10127,7 +10122,7 @@
 
             
 
-            <td class="description last">The Framebuffer object to bind.</td>
+            <td class="description last">要绑定的Framebuffer.</td>
         </tr>
 
     
@@ -10168,7 +10163,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line228">line 228</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line227">line 227</a>
     </li></ul></dd>
     
 
@@ -10202,7 +10197,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App对象。
 </div>
 
 
@@ -10239,8 +10234,7 @@
 
 
 <div class="description">
-    Enable the WEBGL_compressed_texture_etc extension, which allows the following enums to
-        be used as texture formats:
+    启用 WEBGL_compressed_texture_etc 扩展。该扩展允许使用以下枚举的贴图格式：
         
         <ul>
           <li>PicoGL.COMPRESSED_R11_EAC
@@ -10300,7 +10294,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line754">line 754</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line744">line 744</a>
     </li></ul></dd>
     
 
@@ -10327,7 +10321,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App 对象。
 </div>
 
 
@@ -10364,8 +10358,7 @@
 
 
 <div class="description">
-    Enable the EXT_color_buffer_float extension. Allows for creating float textures as
-        render targets on FrameBuffer objects.
+    启用 EXT_color_buffer_float 扩展。允许在帧缓冲对象上以渲染目标的形式创建浮点纹理。
 </div>
 
 
@@ -10409,7 +10402,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line669">line 669</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line660">line 660</a>
     </li></ul></dd>
     
 
@@ -10443,7 +10436,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App 对象。
 </div>
 
 
@@ -10480,7 +10473,7 @@
 
 
 <div class="description">
-    Enable the OES_texture_float_linear extension. Allows for linear blending on float textures.
+    启用 OES_texture_float_linear 扩展。允许在浮点纹理上使用线性混合。
 </div>
 
 
@@ -10524,7 +10517,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line682">line 682</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line673">line 673</a>
     </li></ul></dd>
     
 
@@ -10558,7 +10551,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App 对象。
 </div>
 
 
@@ -10595,7 +10588,7 @@
 
 
 <div class="description">
-    Simulate context loss.
+    模拟丢失上下文。
 </div>
 
 
@@ -10639,7 +10632,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line113">line 113</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line112">line 112</a>
     </li></ul></dd>
     
 
@@ -10666,7 +10659,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App对象。
 </div>
 
 
@@ -10703,7 +10696,7 @@
 
 
 <div class="description">
-    Disable blending
+    关闭混合。
 </div>
 
 
@@ -10747,7 +10740,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line403">line 403</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line402">line 402</a>
     </li></ul></dd>
     
 
@@ -10774,7 +10767,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App 对象。
 </div>
 
 
@@ -10811,7 +10804,7 @@
 
 
 <div class="description">
-    Disable depth testing.
+    关闭深度测试
 </div>
 
 
@@ -10855,7 +10848,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line353">line 353</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line352">line 352</a>
     </li></ul></dd>
     
 
@@ -10882,7 +10875,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App 对象。
 </div>
 
 
@@ -10919,7 +10912,7 @@
 
 
 <div class="description">
-    Disable rasterization step.
+    禁用光栅化步骤。
 </div>
 
 
@@ -10963,7 +10956,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line631">line 631</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line623">line 623</a>
     </li></ul></dd>
     
 
@@ -10990,7 +10983,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App 对象。
 </div>
 
 
@@ -11027,7 +11020,7 @@
 
 
 <div class="description">
-    Disable scissor testing.
+    关闭裁剪测试。
 </div>
 
 
@@ -11071,7 +11064,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line485">line 485</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line483">line 483</a>
     </li></ul></dd>
     
 
@@ -11098,7 +11091,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App 对象。
 </div>
 
 
@@ -11135,7 +11128,7 @@
 
 
 <div class="description">
-    Disable stencil testing.
+    关闭蒙版测试。
 </div>
 
 
@@ -11179,7 +11172,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line460">line 460</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line458">line 458</a>
     </li></ul></dd>
     
 
@@ -11206,7 +11199,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App 对象。
 </div>
 
 
@@ -11243,7 +11236,7 @@
 
 
 <div class="description">
-    Set function to handle context restoration after loss.
+    为上下文从丢失中恢复设定一个句柄。
 </div>
 
 
@@ -11295,7 +11288,7 @@
 
             
 
-            <td class="description last">Context restored handler.</td>
+            <td class="description last">上下文恢复句柄。</td>
         </tr>
 
     
@@ -11336,7 +11329,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line146">line 146</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line145">line 145</a>
     </li></ul></dd>
     
 
@@ -11363,7 +11356,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App对象。
 </div>
 
 
@@ -11400,8 +11393,7 @@
 
 
 <div class="description">
-    Enable the WEBGL_compressed_texture_pvrtc extension, which allows the following enums to
-        be used as texture formats:
+    启用 WEBGL_compressed_texture_pvrtc 扩展。该扩展允许使用以下枚举的贴图格式：
 
         <ul>
           <li>PicoGL.COMPRESSED_RGB_PVRTC_4BPPV1_IMG
@@ -11452,7 +11444,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line864">line 864</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line852">line 852</a>
     </li></ul></dd>
     
 
@@ -11479,7 +11471,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App 对象。
 </div>
 
 
@@ -11516,7 +11508,7 @@
 
 
 <div class="description">
-    Enable rasterization step.
+    启用光栅化步骤。
 </div>
 
 
@@ -11560,7 +11552,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line619">line 619</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line611">line 611</a>
     </li></ul></dd>
     
 
@@ -11587,7 +11579,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App 对象。
 </div>
 
 
@@ -11624,7 +11616,7 @@
 
 
 <div class="description">
-    Bind a read framebuffer to the WebGL context.
+    为WebGL上下文绑定一个读取framebuffer。
 </div>
 
 
@@ -11676,7 +11668,7 @@
 
             
 
-            <td class="description last">The Framebuffer object to bind.</td>
+            <td class="description last">要绑定的Framebuffer.</td>
         </tr>
 
     
@@ -11717,7 +11709,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line242">line 242</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line241">line 241</a>
     </li></ul></dd>
     
 
@@ -11751,7 +11743,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App对象。
 </div>
 
 
@@ -11788,7 +11780,7 @@
 
 
 <div class="description">
-    Read a pixel's color value from the currently-bound framebuffer.
+    从当前绑定的帧缓冲中读取一个像素的色值。
 </div>
 
 
@@ -12094,7 +12086,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line890">line 890</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line878">line 878</a>
     </li></ul></dd>
     
 
@@ -12158,7 +12150,7 @@
 
 
 <div class="description">
-    Resize the drawing surface.
+    调整绘图平面大小。
 </div>
 
 
@@ -12210,7 +12202,7 @@
 
             
 
-            <td class="description last">The new canvas width.</td>
+            <td class="description last">新的画布宽度。</td>
         </tr>
 
     
@@ -12233,7 +12225,7 @@
 
             
 
-            <td class="description last">The new canvas height.</td>
+            <td class="description last">新的画布高度。</td>
         </tr>
 
     
@@ -12274,7 +12266,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line945">line 945</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line933">line 933</a>
     </li></ul></dd>
     
 
@@ -12301,7 +12293,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App 对象。
 </div>
 
 
@@ -12338,7 +12330,7 @@
 
 
 <div class="description">
-    Simulate context restoration.
+    模拟恢复上下文。
 </div>
 
 
@@ -12382,7 +12374,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line131">line 131</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line130">line 130</a>
     </li></ul></dd>
     
 
@@ -12409,7 +12401,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App对象。
 </div>
 
 
@@ -12446,8 +12438,8 @@
 
 
 <div class="description">
-    Enable the WEBGL_compressed_texture_s3tc and WEBGL_compressed_texture_s3tc_srgb extensions, which 
-        allow the following enums to be used as texture formats:
+    启用 WEBGL_compressed_texture_s3tc 和 WEBGL_compressed_texture_s3tc_srgb 扩展。该扩展允许
+        使用以下枚举的贴图格式：
 
         <ul>
           <li>PicoGL.COMPRESSED_RGB_S3TC_DXT1_EXT
@@ -12502,7 +12494,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line707">line 707</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line698">line 698</a>
     </li></ul></dd>
     
 
@@ -12529,7 +12521,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App 对象。
 </div>
 
 
@@ -12566,7 +12558,7 @@
 
 
 <div class="description">
-    Define the scissor box.
+    定义裁剪盒
 </div>
 
 
@@ -12610,7 +12602,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line497">line 497</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line495">line 495</a>
     </li></ul></dd>
     
 
@@ -12637,7 +12629,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App 对象。
 </div>
 
 
@@ -12674,7 +12666,7 @@
 
 
 <div class="description">
-    Enable scissor testing.
+    开启裁剪测试。
 </div>
 
 
@@ -12718,7 +12710,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line473">line 473</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line471">line 471</a>
     </li></ul></dd>
     
 
@@ -12745,7 +12737,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App 对象。
 </div>
 
 
@@ -12782,10 +12774,9 @@
 
 
 <div class="description">
-    Set the stencil function and reference value.
-        E.g. app.stencilFunc(PicoGL.EQUAL, 1, 0xFF).
-        NOTE: Only works if { stencil: true } passed as a
-        context attribute when creating the App!
+    设定蒙版测试方法和引用值。
+        例如：app.stencilFunc(PicoGL.EQUAL, 1, 0xFF).
+        注意：仅当创建 App 时，传入了 { stencil: true } 上下文参数才会生效。
 </div>
 
 
@@ -12837,7 +12828,7 @@
 
             
 
-            <td class="description last">The testing function.</td>
+            <td class="description last">测试方法。</td>
         </tr>
 
     
@@ -12860,7 +12851,7 @@
 
             
 
-            <td class="description last">The reference value.</td>
+            <td class="description last">引用的值。</td>
         </tr>
 
     
@@ -12925,7 +12916,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line550">line 550</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line545">line 545</a>
     </li></ul></dd>
     
 
@@ -12952,7 +12943,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App 对象。
 </div>
 
 
@@ -12989,10 +12980,9 @@
 
 
 <div class="description">
-    Set the stencil function and reference value for a particular face orientation.
-        E.g. app.stencilFuncSeparate(PicoGL.FRONT, PicoGL.EQUAL, 1, 0xFF).
-        NOTE: Only works if { stencil: true } passed as a
-        context attribute when creating the App!
+    设定用于特定朝向的蒙版方法和引用值。    
+        例如：app.stencilFuncSeparate(PicoGL.FRONT, PicoGL.EQUAL, 1, 0xFF).
+        注意：仅当创建 App 时，传入了 { stencil: true } 上下文参数才会生效。
 </div>
 
 
@@ -13155,7 +13145,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line570">line 570</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line564">line 564</a>
     </li></ul></dd>
     
 
@@ -13219,10 +13209,9 @@
 
 
 <div class="description">
-    Set the bitmask to use for tested stencil values.
-        E.g. app.stencilMask(0xFF).
-        NOTE: Only works if { stencil: true } passed as a
-        context attribute when creating the App!
+    设定用于已测试蒙版值得位掩码。
+        例如：app.stencilMask(0xFF).
+        注意：仅当创建 App 时，传入了 { stencil: true } 上下文参数才会生效。
 </div>
 
 
@@ -13274,7 +13263,7 @@
 
             
 
-            <td class="description last">The mask value.</td>
+            <td class="description last">掩码值。</td>
         </tr>
 
     
@@ -13315,7 +13304,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line514">line 514</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line511">line 511</a>
     </li></ul></dd>
     
 
@@ -13342,7 +13331,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App 对象。
 </div>
 
 
@@ -13379,10 +13368,9 @@
 
 
 <div class="description">
-    Set the bitmask to use for tested stencil values for a particular face orientation.
-        E.g. app.stencilMaskSeparate(PicoGL.FRONT, 0xFF).
-        NOTE: Only works if { stencil: true } passed as a
-        context attribute when creating the App!
+    设定用于特定朝向的已测试蒙版值得位掩码。
+        例如：app.stencilMaskSeparate(PicoGL.FRONT, 0xFF).
+        注意：仅当创建 App 时，传入了 { stencil: true } 上下文参数才会生效。
 </div>
 
 
@@ -13434,7 +13422,7 @@
 
             
 
-            <td class="description last">The face orientation to apply the mask to.</td>
+            <td class="description last">需要应用掩码的朝向。</td>
         </tr>
 
     
@@ -13457,7 +13445,7 @@
 
             
 
-            <td class="description last">The mask value.</td>
+            <td class="description last">掩码值。</td>
         </tr>
 
     
@@ -13498,7 +13486,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line531">line 531</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line527">line 527</a>
     </li></ul></dd>
     
 
@@ -13525,7 +13513,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App 对象。
 </div>
 
 
@@ -13562,10 +13550,9 @@
 
 
 <div class="description">
-    Set the operations for updating stencil buffer values.
-        E.g. app.stencilOp(PicoGL.KEEP, PicoGL.KEEP, PicoGL.REPLACE).
-        NOTE: Only works if { stencil: true } passed as a
-        context attribute when creating the App!
+    设定蒙版缓冲值的更新操作。
+        例如：app.stencilOp(PicoGL.KEEP, PicoGL.KEEP, PicoGL.REPLACE).
+        注意：仅当创建 App 时，传入了 { stencil: true } 上下文参数才会生效。
 </div>
 
 
@@ -13704,7 +13691,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line588">line 588</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line581">line 581</a>
     </li></ul></dd>
     
 
@@ -13768,10 +13755,9 @@
 
 
 <div class="description">
-    Set the operations for updating stencil buffer values for a particular face orientation.
-        E.g. app.stencilOpSeparate(PicoGL.FRONT, PicoGL.KEEP, PicoGL.KEEP, PicoGL.REPLACE).
-        NOTE: Only works if { stencil: true } passed as a
-        context attribute when creating the App!
+    设定用于特定朝向的蒙版缓冲值的更新操作。  
+        例如：app.stencilOpSeparate(PicoGL.FRONT, PicoGL.KEEP, PicoGL.KEEP, PicoGL.REPLACE).
+        注意：仅当创建 App 时，传入了 { stencil: true } 上下文参数才会生效。
 </div>
 
 
@@ -13933,7 +13919,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line607">line 607</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line599">line 599</a>
     </li></ul></dd>
     
 
@@ -13997,9 +13983,8 @@
 
 
 <div class="description">
-    Enable stencil testing.
-        NOTE: Only works if { stencil: true } passed as a
-        context attribute when creating the App!
+    开启蒙版测试。
+        注意：仅当创建 App 时，传入了 { stencil: true } 上下文参数才会生效。
 </div>
 
 
@@ -14043,7 +14028,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line448">line 448</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line446">line 446</a>
     </li></ul></dd>
     
 
@@ -14070,7 +14055,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App 对象。
 </div>
 
 
@@ -14107,7 +14092,7 @@
 
 
 <div class="description">
-    Set the viewport.
+    设定视口大小。
 </div>
 
 
@@ -14269,7 +14254,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line911">line 911</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line899">line 899</a>
     </li></ul></dd>
     
 
@@ -14296,7 +14281,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    App 对象。
 </div>
 
 
@@ -14341,7 +14326,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Nov 12 2018 08:21:36 GMT-0500 (GMT-05:00)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Jan 09 2019 21:24:54 GMT+0800 (GMT+08:00)
 </footer>
 
 <script> prettyPrint(); </script>
