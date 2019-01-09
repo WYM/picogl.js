@@ -5,15 +5,15 @@ PicoGL.js
 
 **[API Docs](https://tsherif.github.io/picogl.js/docs/)** | **[Tutorial](https://tsherif.wordpress.com/2017/07/26/webgl-2-development-with-picogl-js/)** | **[Chat](https://gitter.im/picogl-js/general)**
 
-PicoGL.js is minimal WebGL 2 rendering library. It's meant for developers who understand the WebGL 2 rendering pipeline and want to use it, but with a more convenient API. Typical usage of PicoGL.js will involve creating programs, vertex buffers, vertex arrays, uniform buffers, framebuffers, textures, transform feedbacks, and combining them into draw calls.
+PicoGL.js 是基于 WebGL 2 的最小渲染库。它能够为理解 WebGL 2 渲染管线的开发者提供更方便的API。PicoGL.js 的典型用途是参与创建程序（Program）、顶点缓冲（Vertex Buffer）、顶点数组（Vertex Array）、Uniform Buffers、 帧缓冲（Framebuffers）、纹理（Textures）、变换回传（Transform Feedbacks）、以及将他们合并为 DrawCall。
 
 ```JavaScript
 
-    // Create App which manages all GL state
+    // 创建管理所有 GL 状态的 App
     var app = PicoGL.createApp(canvas)
     .clearColor(0.0, 0.0, 0.0, 1.0);
     
-    // Create Program
+    // 创建 Program
     var program = app.createProgram(vertexShaderSource, fragmentShaderSource);
 
     // Create a buffer of vertex attributes
@@ -50,36 +50,36 @@ PicoGL.js is minimal WebGL 2 rendering library. It's meant for developers who un
 
 ``` 
 
-Note that PicoGL.js is **not** a scene graph library. There are no objects, hierarchies, transforms, materials, etc. It has been designed only to make management of GPU state more convenient. Its conceptual model maps fairly directly to the constructs one deals with when writing directly with the WebGL 2 API. The only higher-level construct is the **draw call**, which manages sets of related lower-level constructs.
+注意：PicoGL.js **不是**场景图渲染库。这里没有 Objects、Hierarchies、Transforms、Materials 等对象。它只是设计用来更方便地管理GPU状态。它的概念模型可以直接映射到使用 WenGL 2 API 直接编写的结构上。它唯一的高阶结构是用来管理一系列相关低阶结构的 **DrawCall**。
 
 
 
-Usage
+使用方法
 -----
-PicoGL.js can be used directly by downloading the [built source](https://tsherif.github.io/picogl.js/build/picogl.min.js) and loading it via a script tag:
+可以直接下载PicoGL.js 的 [built source](https://tsherif.github.io/picogl.js/build/picogl.min.js) ，并通过 script 标签加载：
 
 ```HTML
     <script src="js/picogl.min.js"></script>
 ```
 
-or it can be installed via [npm](https://www.npmjs.com/package/picogl):
+或者通过 [npm](https://www.npmjs.com/package/picogl) 安装：
 
 ```bash
     npm install picogl
 ```
 
-and loaded via CommonJS-style `require`:
+然后用 CommonJS 风格的 `require` 导入：
 
 ```JavaScript
     var PicoGL = require("picogl");
 ```
 
-Features
+特性
 --------
 
-PicoGL.js simplifies usage of some more complex WebGL 2 features, such as multiple render targets, uniform buffers, transform feedback and instanced drawing.
+PicoGL.js 简化了 WebGL 2 特性复杂的用法。例如多渲染目标(MRT)、Uniform Buffers、变换回传（Transform Feedback）和实例化渲染（Instanced Drawing）。
 
-**Multiple Render Targets**
+**多渲染目标（Multiple Render Targets）**
 
 ```JavaScript
     var app = PicoGL.createApp(canvas)
@@ -146,7 +146,7 @@ PicoGL.js simplifies usage of some more complex WebGL 2 features, such as multip
     .uniformBlock("UniformBlock", uniformBuffer);
 ```
 
-**Transform Feedback**
+**变换回传（Transform Feedback）**
 
 ```JavaScript
     var app = PicoGL.createApp(canvas)
@@ -178,7 +178,7 @@ PicoGL.js simplifies usage of some more complex WebGL 2 features, such as multip
 
 ``` 
 
-**Instanced Drawing**
+**实例化渲染（Instanced Drawing）**
 
 ```JavaScript
     var app = PicoGL.createApp(canvas)
