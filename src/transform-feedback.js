@@ -24,12 +24,12 @@
 "use strict";
 
 /**
-    Tranform feedback object.
+    变换回传（Tranform feedback）对象。
 
     @class
-    @prop {WebGLRenderingContext} gl The WebGL context.
-    @prop {WebGLTransformFeedback} transformFeedback Transform feedback object.
-    @prop {Object} appState Tracked GL state.
+    @prop {WebGLRenderingContext} gl WebGL上下文。
+    @prop {WebGLTransformFeedback} transformFeedback WebGL 变换回传对象。
+    @prop {Object} appState 跟踪的GL状态。
 */
 class TransformFeedback {
 
@@ -38,18 +38,18 @@ class TransformFeedback {
         this.appState = appState;
         this.transformFeedback = null;
 
-        // TODO(Tarek): Need to rebind buffers due to bug in ANGLE.
-        // Remove this when that's fixed.
+        // TODO(Tarek): 因为 ANGLE 的 bug，这里需要重新绑定 buffers。
+        // 修复后移除本节。
         this.angleBugBuffers = [];
 
         this.restore();
     }
 
     /**
-        Restore transform feedback after context loss.
+        在上下文丢失后，恢复变换回传对象。
 
         @method
-        @return {TransformFeedback} The TransformFeedback object.
+        @return {TransformFeedback} 变换回传对象。
     */
     restore() {
         if (this.appState.transformFeedback === this) {
@@ -64,12 +64,12 @@ class TransformFeedback {
     }
 
     /**
-        Bind a feedback buffer to capture transform output.
+        绑定一个变换回传对象以捕获变换输出。
 
         @method
-        @param {number} index Index of transform feedback varying to capture.
-        @param {VertexBuffer} buffer Buffer to record output into.
-        @return {TransformFeedback} The TransformFeedback object.
+        @param {number} index 需要捕获的变换回传 varying 索引。
+        @param {VertexBuffer} buffer 用来记录输出信息的Buffer。
+        @return {TransformFeedback} 变换回传对象。
     */
     feedbackBuffer(index, buffer) {
         this.bind();
@@ -82,10 +82,10 @@ class TransformFeedback {
     }
 
     /**
-        Delete this transform feedback.
+        删除这个变换回传。
 
         @method
-        @return {TransformFeedback} The TransformFeedback object.
+        @return {TransformFeedback} 变换回传对象。
     */
     delete() {
         if (this.transformFeedback) {
@@ -102,11 +102,11 @@ class TransformFeedback {
     }
 
     /**
-        Bind this transform feedback.
+        绑定这个变换回传。
 
         @method
         @ignore
-        @return {TransformFeedback} The TransformFeedback object.
+        @return {TransformFeedback} 变换回传对象。
     */
     bind() {
         if (this.appState.transformFeedback !== this) {

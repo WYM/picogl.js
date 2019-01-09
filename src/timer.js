@@ -27,19 +27,18 @@ const CONSTANTS = require("./constants");
 const Query = require("./query");
 
 /**
-    Rendering timer.
+    渲染计时器。
 
     @class
-    @prop {WebGLRenderingContext} gl The WebGL context.
-    @prop {Object} cpuTimer Timer for CPU. Will be window.performance, if available, or window.Date.
-    @prop {boolean} gpuTimer Whether the gpu timing is available (EXT_disjoint_timer_query_webgl2 or
-            EXT_disjoint_timer_query are supported).
-    @prop {WebGLQuery} gpuTimerQuery Timer query object for GPU (if gpu timing is supported).
-    @prop {boolean} gpuTimerQueryInProgress Whether a gpu timer query is currently in progress.
-    @prop {number} cpuStartTime When the last CPU timing started.
-    @prop {number} cpuTime Time spent on CPU during last timing. Only valid if ready() returns true.
-    @prop {number} gpuTime Time spent on GPU during last timing. Only valid if ready() returns true.
-            Will remain 0 if extension EXT_disjoint_timer_query_webgl2 is unavailable.
+    @prop {WebGLRenderingContext} gl WebGL 上下文。
+    @prop {Object} cpuTimer CPU 计时器。优先使用 window.performance，如果不支持则使用 window.Date。
+    @prop {boolean} gpuTimer GPU 计时器是否可用（取决于是否支持 EXT_disjoint_timer_query_webgl2 或 EXT_disjoint_timer_query）。
+    @prop {WebGLQuery} gpuTimerQuery GPU 时间查询对象（仅在支持 GPU 计时器时有效）。
+    @prop {boolean} gpuTimerQueryInProgress 是否有正在进行中的 GPU 时间查询操作。
+    @prop {number} cpuStartTime 最后一次 CPU 计时器启动时间。
+    @prop {number} cpuTime 上次CPU计时花费的时间。仅在 ready() 返回 true 时有效。
+    @prop {number} gpuTime 上次GPU计时花费的时间。仅在 ready() 返回 true 时有效。
+            如果 EXT_disjoint_timer_query_webgl2 扩展不可用，值固定为 0。
 */
 class Timer {
 
@@ -58,10 +57,10 @@ class Timer {
     }
 
     /**
-        Restore timer after context loss.
+        在上下文丢失后恢复计时器。
 
         @method
-        @return {Timer} The Timer object.
+        @return {Timer} 计时器对象。
     */
     restore() {
         this.gpuTimer = !!(this.gl.getExtension("EXT_disjoint_timer_query_webgl2") || this.gl.getExtension("EXT_disjoint_timer_query"));
@@ -83,10 +82,10 @@ class Timer {
 
 
     /**
-        Start timing.
+        启动计时器。
 
         @method
-        @return {Timer} The Timer object.
+        @return {Timer} 计时器对象。
     */
     start() {
         if (this.gpuTimer) {
@@ -103,10 +102,10 @@ class Timer {
 
 
     /**
-        Stop timing.
+        停止计时器。
 
         @method
-        @return {Timer} The Timer object.
+        @return {Timer} 计时器对象。
     */
     end() {
         if (this.gpuTimer) {
@@ -122,13 +121,12 @@ class Timer {
     }
 
     /**
-        Check if timing results are available. If
-        this method returns true, the cpuTime and
-        gpuTime properties will be set to valid
-        values.
+        检查计时结果是否可用。仅当这个方法返回true时，
+        cpuTime 和 gpuTime 这两个属性才会被设为有效
+        的值。
 
         @method
-        @return {boolean} If results are available.
+        @return {boolean} 结果是否可用。
     */
     ready() {
         if (this.gpuTimer) {
@@ -151,10 +149,10 @@ class Timer {
     }
 
     /**
-        Delete this timer.
+        删除这个 Timer。
 
         @method
-        @return {Timer} The Timer object.
+        @return {Timer} 计时器对象。
     */
     delete() {
         if (this.gpuTimerQuery) {

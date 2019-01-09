@@ -25,8 +25,7 @@
 
 const CONSTANTS = require("./constants");
 
-// Classes to manage uniform value updates, including
-// caching current values.
+// 用来管理 uniform 值更新的类，包括缓存当前值。
 
 const UNIFORM_FUNC_NAME = {};
 UNIFORM_FUNC_NAME[CONSTANTS.BOOL] = "uniform1i";

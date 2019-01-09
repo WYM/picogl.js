@@ -24,14 +24,14 @@
 "use strict";
 
 /**
-    Generic query object.
+    通用查询对象。
 
     @class
-    @prop {WebGLRenderingContext} gl The WebGL context.
-    @prop {WebGLQuery} query Query object.
-    @prop {GLEnum} target The type of information being queried.
-    @prop {boolean} active Whether or not a query is currently in progress.
-    @prop {Any} result The result of the query (only available after a call to ready() returns true). 
+    @prop {WebGLRenderingContext} gl WebGL 上下文。
+    @prop {WebGLQuery} query 查询对象。
+    @prop {GLEnum} target 需要查询的信息类型。
+    @prop {boolean} active 是否有任一查询正在进行。
+    @prop {Any} result 查询结果（仅在ready()返回true时可用）。
 */
 class Query {
 
@@ -46,10 +46,10 @@ class Query {
     }
 
     /**
-        Restore query after context loss.
+        在上下文丢失后恢复查询。
 
         @method
-        @return {Query} The Query object.
+        @return {Query} 查询对象。
     */
     restore() {
         this.query = this.gl.createQuery();
@@ -60,10 +60,10 @@ class Query {
     }
 
     /**
-        Begin a query.
+        开始查询。
 
         @method
-        @return {Query} The Query object.
+        @return {Query} 查询对象。
     */
     begin() {
         if (!this.active) {
@@ -75,10 +75,10 @@ class Query {
     }
 
     /**
-        End a query.
+        结束查询。
 
         @method
-        @return {Query} The Query object.
+        @return {Query} 查询对象。
     */
     end() {
         if (!this.active) {
@@ -90,15 +90,15 @@ class Query {
     }
 
     /**
-        Check if query result is available.
+        检查查询结果是否可用。
 
         @method
-        @return {boolean} If results are available.
+        @return {boolean} 查询结果是否可用。
     */
     ready() {
         if (this.active && this.gl.getQueryParameter(this.query, this.gl.QUERY_RESULT_AVAILABLE)) {
             this.active = false;
-            // Note(Tarek): Casting because FF incorrectly returns booleans.
+            // Note(Tarek): 因为 FF 会错误地返回布尔型，这里包装一层。
             // https://bugzilla.mozilla.org/show_bug.cgi?id=1422714 
             this.result = Number(this.gl.getQueryParameter(this.query, this.gl.QUERY_RESULT));
             return true;
@@ -108,10 +108,10 @@ class Query {
     }
 
     /**
-        Delete this query.
+        删除这个查询。
 
         @method
-        @return {Query} The Query object.
+        @return {Query} 查询对象。
     */
     delete() {
         if (this.query) {

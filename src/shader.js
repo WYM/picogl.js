@@ -26,11 +26,11 @@
 const CONSTANTS = require("./constants");
 
 /**
-    WebGL shader.
+    WelGL 着色器。
 
     @class
-    @prop {WebGLRenderingContext} gl The WebGL context.
-    @prop {WebGLShader} shader The shader.
+    @prop {WebGLRenderingContext} gl WelGL 上下文。
+    @prop {WebGLShader} shader 着色器。
 */
 class Shader {
     
@@ -43,11 +43,11 @@ class Shader {
     }
 
     /**
-        Restore shader after context loss.
+        在上下文丢失后恢复着色器。
 
         @method
-        @param {string} source Shader source.
-        @return {Shader} The Shader object.
+        @param {string} source 包含 glsl 程序代码的字符串。
+        @return {Shader} 着色器对象。
     */
     restore(source) {
         this.shader = this.gl.createShader(this.type);
@@ -68,10 +68,10 @@ class Shader {
     }
 
     /**
-        Delete this shader.
+        删除这个着色器。
 
         @method
-        @return {Shader} The Shader object.
+        @return {Shader} 着色器对象。
     */
     delete() {
         if (this.shader) {

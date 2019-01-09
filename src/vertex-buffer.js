@@ -26,18 +26,18 @@
 const CONSTANTS = require("./constants");
 
 /**
-    Storage for vertex data.
+    存储顶点数据。
 
     @class
-    @prop {WebGLRenderingContext} gl The WebGL context.
+    @prop {WebGLRenderingContext} gl WebGL 上下文
     @prop {WebGLBuffer} buffer Allocated buffer storage.
     @prop {GLEnum} type The type of data stored in the buffer.
     @prop {number} itemSize Number of array elements per vertex.
-    @prop {number} numItems Number of vertices represented.
-    @prop {GLEnum} usage The usage pattern of the buffer.
-    @prop {boolean} indexArray Whether this is an index array.
-    @prop {GLEnum} binding GL binding point (ARRAY_BUFFER or ELEMENT_ARRAY_BUFFER).
-    @prop {Object} appState Tracked GL state.
+    @prop {number} numItems 表示的定顶点数量。
+    @prop {GLEnum} usage buffer 的使用模式。
+    @prop {boolean} indexArray 是否是一个 index array。
+    @prop {GLEnum} binding GL绑定点（ARRAY_BUFFER或ELEMENT_ARRAY_BUFFER）。
+    @prop {Object} appState 跟踪的GL状态。
 */
 class VertexBuffer {
 
