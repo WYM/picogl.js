@@ -5,7 +5,7 @@ PicoGL.js
 
 **[API Docs](https://tsherif.github.io/picogl.js/docs/)** | **[Tutorial](https://tsherif.wordpress.com/2017/07/26/webgl-2-development-with-picogl-js/)** | **[Chat](https://gitter.im/picogl-js/general)**
 
-PicoGL.js 是基于 WebGL 2 的最小渲染库。它能够为理解 WebGL 2 渲染管线的开发者提供更方便的API。PicoGL.js 的典型用途是参与创建程序（Program）、顶点缓冲（Vertex Buffer）、顶点数组（Vertex Array）、Uniform Buffers、 帧缓冲（Framebuffers）、纹理（Textures）、变换回传（Transform Feedbacks）、以及将他们合并为 DrawCall。
+PicoGL.js 是基于 WebGL 2 的最小渲染库。它能够为熟悉 WebGL 2 渲染管线的开发者提供更方便的API。PicoGL.js 的典型用途是参与创建程序（Program）、顶点缓冲（Vertex Buffer）、顶点数组（Vertex Array）、Uniform Buffers、 帧缓冲（Framebuffers）、纹理（Textures）、变换回传（Transform Feedbacks）、以及将他们合并为 DrawCall。
 
 ```JavaScript
 
@@ -50,7 +50,7 @@ PicoGL.js 是基于 WebGL 2 的最小渲染库。它能够为理解 WebGL 2 渲�
 
 ``` 
 
-注意：PicoGL.js **不是**场景图渲染库。这里没有 Objects、Hierarchies、Transforms、Materials 等对象。它只是设计用来更方便地管理GPU状态。它的概念模型可以直接映射到使用 WenGL 2 API 直接编写的结构上。它唯一的高阶结构是用来管理一系列相关低阶结构的 **DrawCall**。
+注意：PicoGL.js **不是**场景图渲染库。这里没有 Objects、Hierarchies、Transforms、Materials 等对象。它只是设计用来更方便地管理GPU状态。它的概念模型可以映射到使用 WenGL 2 API 直接编写的结构上。它唯一的高阶结构是用来管理一系列相关低阶结构的 **DrawCall**。
 
 
 
