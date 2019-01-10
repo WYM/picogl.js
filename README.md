@@ -3,7 +3,7 @@ PicoGL.js
 
 [![Build Status](https://travis-ci.org/tsherif/picogl.js.svg?branch=master)](https://travis-ci.org/tsherif/picogl.js) [![GZIP size](https://badge-size.herokuapp.com/tsherif/picogl.js/master/build/picogl.min.js.svg?compression=gzip)](https://github.com/tsherif/picogl.js/blob/master/build/picogl.min.js) [![Gitter](https://img.shields.io/gitter/room/picogl.js/general.svg)](https://gitter.im/picogl-js/general) [![License](https://img.shields.io/github/license/tsherif/picogl.js.svg)](https://github.com/tsherif/picogl.js/blob/master/LICENSE) [![NPM](https://img.shields.io/npm/v/picogl.svg)](https://www.npmjs.com/package/picogl)
 
-**[API Docs](https://tsherif.github.io/picogl.js/docs/)** | **[Tutorial](https://tsherif.wordpress.com/2017/07/26/webgl-2-development-with-picogl-js/)** | **[Chat](https://gitter.im/picogl-js/general)**
+**[API 中文文档](https://soulgem.cc/picogl.js/docs/PicoGL.html)** | **[Tutorial](https://tsherif.wordpress.com/2017/07/26/webgl-2-development-with-picogl-js/)** | **[Chat](https://gitter.im/picogl-js/general)**
 
 PicoGL.js 是基于 WebGL 2 的最小渲染库。它能够为熟悉 WebGL 2 渲染管线的开发者提供更方便的API。PicoGL.js 的典型用途是参与创建程序（Program）、顶点缓冲（Vertex Buffer）、顶点数组（Vertex Array）、Uniform Buffers、 帧缓冲（Framebuffers）、纹理（Textures）、变换回传（Transform Feedbacks）、以及将他们合并为 DrawCall。
 
