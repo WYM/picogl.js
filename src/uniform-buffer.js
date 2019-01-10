@@ -26,7 +26,7 @@
 const CONSTANTS = require("./constants");
 
 /**
-    Storage for uniform data. Data is stored in std140 layout.
+    存储 uniform 数据。数据以 std140 布局存储。
 
     @class
     @prop {WebGLRenderingContext} gl The WebGL context.

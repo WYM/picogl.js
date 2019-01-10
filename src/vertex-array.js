@@ -23,17 +23,17 @@
 const CONSTANTS = require("./constants");
 
 /**
-    Organizes vertex buffer and attribute state.
+    管理顶点缓冲和属性状态。
 
     @class
-    @prop {WebGLRenderingContext} gl The WebGL context.
-    @prop {WebGLVertexArrayObject} vertexArray Vertex array object.
-    @prop {number} numElements Number of elements in the vertex array.
-    @prop {boolean} indexed Whether this vertex array is set up for indexed drawing.
-    @prop {GLenum} indexType Data type of the indices.
-    @prop {boolean} instanced Whether this vertex array is set up for instanced drawing.
-    @prop {number} numInstances Number of instances to draw with this vertex array.
-    @prop {Object} appState Tracked GL state.
+    @prop {WebGLRenderingContext} gl WebGL 上下文。
+    @prop {WebGLVertexArrayObject} vertexArray 顶点数组对象。
+    @prop {number} numElements 顶点数组中的元素数量。
+    @prop {boolean} indexed 该顶点数组是用于索引绘制。
+    @prop {GLenum} indexType 推断的数据类型。
+    @prop {boolean} instanced 该顶点数组是否用于实例绘制（Instanced Drawing）。
+    @prop {number} numInstances 这个顶点数组需要绘制的实例数量。
+    @prop {Object} appState 跟踪的GL状态。
 */
 class VertexArray {
     
@@ -49,17 +49,17 @@ class VertexArray {
     }
 
     /**
-        Restore vertex array after context loss.
+        在上下文丢失后恢复顶点数组对象。
 
         @method
-        @return {VertexArray} The VertexArray object.
+        @return {VertexArray} 顶点数组对象。
     */
     restore() {
         if (this.appState.vertexArray === this) {
             this.appState.vertexArray = null;
         }
 
-        // re-allocate at gl level, if necessary
+        // 可能的话，在 gl 层进行重新分配
         if (this.vertexArray !== null) {
             this.vertexArray = this.gl.createVertexArray();
         }
@@ -69,12 +69,12 @@ class VertexArray {
 
 
     /**
-        Bind an per-vertex attribute buffer to this vertex array.
+        为这个顶点数组绑定一个逐顶点属性缓冲。
 
         @method
-        @param {number} attributeIndex The attribute location to bind to.
-        @param {VertexBuffer} vertexBuffer The VertexBuffer to bind.
-        @return {VertexArray} The VertexArray object.
+        @param {number} attributeIndex 要绑定的属性 location。
+        @param {VertexBuffer} vertexBuffer 要绑定的顶点缓冲。
+        @return {VertexArray} 顶点数组对象。
     */
     vertexAttributeBuffer(attributeIndex, vertexBuffer) {
         this.attributeBuffer(attributeIndex, vertexBuffer, false, false, false);
@@ -83,12 +83,12 @@ class VertexArray {
     }
 
     /**
-        Bind an per-instance attribute buffer to this vertex array.
+        为这个顶点数组绑定一个逐实例属性缓冲。
 
         @method
-        @param {number} attributeIndex The attribute location to bind to.
-        @param {VertexBuffer} vertexBuffer The VertexBuffer to bind.
-        @return {VertexArray} The VertexArray object.
+        @param {number} attributeIndex 要绑定的属性 location。
+        @param {VertexBuffer} vertexBuffer 要绑定的顶点缓冲。
+        @return {VertexArray} 顶点数组对象。
     */
     instanceAttributeBuffer(attributeIndex, vertexBuffer) {
         this.attributeBuffer(attributeIndex, vertexBuffer, true, false, false);
@@ -97,14 +97,13 @@ class VertexArray {
     }
 
     /**
-        Bind an per-vertex integer attribute buffer to this vertex array.
-        Note that this refers to the attribute in the shader being an integer,
-        not the data stored in the vertex buffer.
+        为这个顶点数组绑定一个逐顶点整型属性缓冲。
+        注意：这代表shader中引用的属性是整型，不是存储在顶点缓冲中的数据。
 
         @method
-        @param {number} attributeIndex The attribute location to bind to.
-        @param {VertexBuffer} vertexBuffer The VertexBuffer to bind.
-        @return {VertexArray} The VertexArray object.
+        @param {number} attributeIndex 要绑定的属性 location。
+        @param {VertexBuffer} vertexBuffer 要绑定的顶点缓冲。
+        @return {VertexArray} 顶点数组对象。
     */
     vertexIntegerAttributeBuffer(attributeIndex, vertexBuffer) {
         this.attributeBuffer(attributeIndex, vertexBuffer, false, true, false);
@@ -113,14 +112,13 @@ class VertexArray {
     }
 
     /**
-        Bind an per-instance integer attribute buffer to this vertex array.
-        Note that this refers to the attribute in the shader being an integer,
-        not the data stored in the vertex buffer.
+        为这个顶点数组绑定一个逐实例整型属性缓冲。
+        注意：这代表shader中引用的属性是整型，不是存储在顶点缓冲中的数据。
 
         @method
-        @param {number} attributeIndex The attribute location to bind to.
-        @param {VertexBuffer} vertexBuffer The VertexBuffer to bind.
-        @return {VertexArray} The VertexArray object.
+        @param {number} attributeIndex 要绑定的属性 location。
+        @param {VertexBuffer} vertexBuffer 要绑定的顶点缓冲。
+        @return {VertexArray} 顶点数组对象。
     */
     instanceIntegerAttributeBuffer(attributeIndex, vertexBuffer) {
         this.attributeBuffer(attributeIndex, vertexBuffer, true, true, false);
@@ -129,14 +127,13 @@ class VertexArray {
     }
 
     /**
-        Bind an per-vertex normalized attribute buffer to this vertex array.
-        Integer data in the vertex buffer will be normalized to [-1.0, 1.0] if
-        signed, [0.0, 1.0] if unsigned.
+        为这个顶点数组绑定一个逐顶点归一化属性缓冲。
+        在顶点缓冲中的整型数据将会被归一化为[-1.0, 1.0]，无符号整型将被归一化为[0.0, 1.0]。
 
         @method
-        @param {number} attributeIndex The attribute location to bind to.
-        @param {VertexBuffer} vertexBuffer The VertexBuffer to bind.
-        @return {VertexArray} The VertexArray object.
+        @param {number} attributeIndex 要绑定的属性 location。
+        @param {VertexBuffer} vertexBuffer 要绑定的顶点缓冲。
+        @return {VertexArray} 顶点数组对象。
     */
     vertexNormalizedAttributeBuffer(attributeIndex, vertexBuffer) {
         this.attributeBuffer(attributeIndex, vertexBuffer, false, false, true);
@@ -145,14 +142,13 @@ class VertexArray {
     }
 
     /**
-        Bind an per-instance normalized attribute buffer to this vertex array.
-        Integer data in the vertex buffer will be normalized to [-1.0, 1.0] if
-        signed, [0.0, 1.0] if unsigned.
+        为这个顶点数组绑定一个逐实例归一化属性缓冲。
+        在顶点缓冲中的整型数据将会被归一化为[-1.0, 1.0]，无符号整型将被归一化为[0.0, 1.0]。
         
         @method
-        @param {number} attributeIndex The attribute location to bind to.
-        @param {VertexBuffer} vertexBuffer The VertexBuffer to bind.
-        @return {VertexArray} The VertexArray object.
+        @param {number} attributeIndex 要绑定的属性 location。
+        @param {VertexBuffer} vertexBuffer 要绑定的顶点缓冲。
+        @return {VertexArray} 顶点数组对象。
     */
     instanceNormalizedAttributeBuffer(attributeIndex, vertexBuffer) {
         this.attributeBuffer(attributeIndex, vertexBuffer, true, false, true);
@@ -161,14 +157,14 @@ class VertexArray {
     }
 
     /**
-        Bind an index buffer to this vertex array.
+        为这个顶点数组绑定一个索引缓冲。
 
         @method
-        @param {VertexBuffer} vertexBuffer The VertexBuffer to bind.
-        @return {VertexArray} The VertexArray object.
+        @param {VertexBuffer} vertexBuffer 要绑定的顶点缓冲。
+        @return {VertexArray} 顶点数组对象。
     */
     indexBuffer(vertexBuffer) {
-        // allocate at gl level, if necessary
+        // 如果可能，在 gl 层进行分配
         if (this.vertexArray === null) {
             this.vertexArray = this.gl.createVertexArray();
         }
@@ -184,10 +180,10 @@ class VertexArray {
     }
 
     /**
-        Delete this vertex array.
+        删除这个顶点数组。
 
         @method
-        @return {VertexArray} The VertexArray object.
+        @return {VertexArray} 顶点数组对象。
     */
     delete() {
         if (this.vertexArray) {
@@ -204,11 +200,11 @@ class VertexArray {
     }
 
     /**
-        Bind this vertex array.
+        绑定这个顶点数组。
 
         @method
         @ignore
-        @return {VertexArray} The VertexArray object.
+        @return {VertexArray} 顶点数组对象。
     */
     bind() {
         if (this.appState.vertexArray !== this) {
@@ -220,14 +216,14 @@ class VertexArray {
     }
 
     /**
-        Attach an attribute buffer
+        附着一个属性缓冲。
 
         @method
         @ignore
-        @return {VertexArray} The VertexArray object.
+        @return {VertexArray} 顶点数组对象。
     */
     attributeBuffer(attributeIndex, vertexBuffer, instanced, integer, normalized) {
-        // allocate at gl level, if necessary
+        // 如果可能，在 gl 层分配
         if (this.vertexArray === null) {
             this.vertexArray = this.gl.createVertexArray();
         }

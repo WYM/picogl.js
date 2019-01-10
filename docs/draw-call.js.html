@@ -54,28 +54,27 @@
 const CONSTANTS = require("./constants");
 
 /**
-    A DrawCall represents the program and values of associated
-    attributes, uniforms and textures for a single draw call.
-
+    DrawCall 代表一次 DrawCall 关联的 attributes、uniforms 和 textures 的程序和值。
+ 
     @class
-    @prop {WebGLRenderingContext} gl The WebGL context.
-    @prop {Program} currentProgram The program to use for this draw call.
-    @prop {VertexArray} currentVertexArray Vertex array to use for this draw call.
-    @prop {TransformFeedback} currentTransformFeedback Transform feedback to use for this draw call.
-    @prop {Array} uniformBuffers Ordered list of active uniform buffers.
-    @prop {Array} uniformBlockNames Ordered list of uniform block names.
-    @prop {Object} uniformBlockBases Map of uniform blocks to uniform buffer bases.
-    @prop {Number} uniformBlockCount Number of active uniform blocks for this draw call.
-    @prop {Object} uniformIndices Map of uniform names to indices in the uniform arrays.
-    @prop {Array} uniformNames Ordered list of uniform names.
-    @prop {Array} uniformValue Ordered list of uniform values.
-    @prop {number} uniformCount The number of active uniforms for this draw call.
-    @prop {Array} textures Array of active textures.
-    @prop {number} textureCount The number of active textures for this draw call.
-    @prop {GLEnum} primitive The primitive type being drawn.
-    @prop {Object} appState Tracked GL state.
-    @prop {GLsizei} numElements The number of element to draw.
-    @prop {GLsizei} numInstances The number of instances to draw.
+    @prop {WebGLRenderingContext} gl WebGL 上下文。
+    @prop {Program} currentProgram 本次 DrawCall 使用的 Program。
+    @prop {VertexArray} currentVertexArray 本次 DrawCall 使用的顶点数组。
+    @prop {TransformFeedback} currentTransformFeedback 本次 DrawCall 使用的变换回传（Transform feedback）。
+    @prop {Array} uniformBuffers 活跃 uniform buffers 的有序列表。
+    @prop {Array} uniformBlockNames uniform 块名称的有序列表。
+    @prop {Object} uniformBlockBases uniform 块到 uniform buffer bases 的映射。
+    @prop {Number} uniformBlockCount 本次 DrawCall 使用的活跃 uniform 块数量。
+    @prop {Object} uniformIndices uniform 名称到 uniform 数组的映射。
+    @prop {Array} uniformNames 活跃 uniform 名称的有序列表。
+    @prop {Array} uniformValue 活跃 uniform 值的有序列表。
+    @prop {number} uniformCount 本次 DrawCall 使用的活跃 uniform 数量。
+    @prop {Array} textures 活跃贴图数组。
+    @prop {number} textureCount 本次 DrawCall 使用的活跃贴图数量。
+    @prop {GLEnum} primitive 绘制的 primitive 类型。
+    @prop {Object} appState 跟踪的GL状态。
+    @prop {GLsizei} numElements 需要绘制的元素数量。
+    @prop {GLsizei} numInstances 需要绘制的实例数量。
 */
 class DrawCall {
 
@@ -104,11 +103,11 @@ class DrawCall {
     }
 
     /**
-        Set the current TransformFeedback object for draw
+        设置当前绘制使用的变换回传（Transform Feedback）对象。
 
         @method
-        @param {TransformFeedback} transformFeedback Transform Feedback to set.
-        @return {DrawCall} The DrawCall object.
+        @param {TransformFeedback} transformFeedback 要设置的变换回传（Transform Feedback）对象。
+        @return {DrawCall} DrawCall 对象。
     */
     transformFeedback(transformFeedback) {
         this.currentTransformFeedback = transformFeedback;
@@ -117,14 +116,13 @@ class DrawCall {
     }
 
     /**
-        Set the value for a uniform. Array uniforms are supported by
-        using appending "[0]" to the array name and passing a flat array
-        with all required values.
-
+        设定一个 uniform 的值。在 uniform 名称结尾添加“[0]”可以使用数组形式
+        的 uniform ，数组形式的 value 应为带有全部所需值的 float 类型数组。
+        
         @method
-        @param {string} name Uniform name.
-        @param {any} value Uniform value.
-        @return {DrawCall} The DrawCall object.
+        @param {string} name Uniform 名称。
+        @param {any} value Uniform 值。
+        @return {DrawCall} DrawCall 对象。
     */
     uniform(name, value) {
         let index = this.uniformIndices[name];
@@ -139,12 +137,12 @@ class DrawCall {
     }
 
     /**
-        Set texture to bind to a sampler uniform.
+        设置绑定到采样 uniform 的贴图。
 
         @method
-        @param {string} name Sampler uniform name.
-        @param {Texture|Cubemap} texture Texture or Cubemap to bind.
-        @return {DrawCall} The DrawCall object.
+        @param {string} name 采样 uniform 名称。
+        @param {Texture|Cubemap} texture 要绑定的 Texture 或 Cubemap。
+        @return {DrawCall} DrawCall 对象。
     */
     texture(name, texture) {
         let unit = this.currentProgram.samplers[name];
@@ -154,12 +152,12 @@ class DrawCall {
     }
 
     /**
-        Set uniform buffer to bind to a uniform block.
+        设定绑定到 uniform 块的 uniform buffer。
 
         @method
-        @param {string} name Uniform block name.
-        @param {UniformBuffer} buffer Uniform buffer to bind.
-        @return {DrawCall} The DrawCall object.
+        @param {string} name uniform 块名称。
+        @param {UniformBuffer} buffer 要绑定的 uniform buffer。
+        @return {DrawCall} DrawCall对象。
     */
     uniformBlock(name, buffer) {
         let base = this.currentProgram.uniformBlocks[name];
@@ -169,11 +167,11 @@ class DrawCall {
     }
 
     /**
-        Set numElements property to allow number of elements to be drawn
+        设定 numElements 属性限制将会被绘制的元素数量。
 
         @method
-        @param {GLsizei} [count=0] Number of element to draw, 0 set to all.
-        @return {DrawCall} The DrawCall object.
+        @param {GLsizei} [count=0] 需要绘制的元素数量，0代表绘制全部。
+        @return {DrawCall} DrawCall 对象。
     */
     elementCount(count = 0) {
         if (count > 0) {
@@ -186,11 +184,11 @@ class DrawCall {
     }
 
     /**
-        Set numInstances property to allow number of instances be drawn
+        设定 numInstances 属性限制将会被绘制的实例数量。
 
         @method
-        @param {GLsizei} [count=0] Number of instance to draw, 0 set to all.
-        @return {DrawCall} The DrawCall object.
+        @param {GLsizei} [count=0] 需要绘制的实例数量，0代表绘制全部。
+        @return {DrawCall} DrawCall 对象。
     */
     instanceCount(count = 0) {
         if (count > 0) {
@@ -203,10 +201,10 @@ class DrawCall {
     }
 
     /**
-        Draw based on current state.
+        根据当前状态进行绘制。
 
         @method
-        @return {DrawCall} The DrawCall object.
+        @return {DrawCall} DrawCall 对象。
     */
     draw() {
         let uniformNames = this.uniformNames;
@@ -250,8 +248,8 @@ class DrawCall {
 
         if (this.currentTransformFeedback) {
             this.gl.endTransformFeedback();
-            // TODO(Tarek): Need to rebind buffers due to bug in older version of ANGLE that FF is using.
-            // Remove this when that's fixed.
+            // TODO(Tarek): 由于FF中使用的旧版本 ANGLE 存在 bug ，这里需要重新绑定 buffers 。
+            // bug修复后移除本节。
             for (let i = 0, len = this.currentTransformFeedback.angleBugBuffers.length; i &lt; len; ++i) {
                 this.gl.bindBufferBase(this.gl.TRANSFORM_FEEDBACK_BUFFER, i, null);
             }
@@ -279,7 +277,7 @@ module.exports = DrawCall;
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Nov 12 2018 08:21:35 GMT-0500 (GMT-05:00)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Jan 09 2019 21:24:54 GMT+0800 (GMT+08:00)
 </footer>
 
 <script> prettyPrint(); </script>

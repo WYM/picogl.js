@@ -26,18 +26,18 @@
 const CONSTANTS = require("./constants");
 
 /**
-    Storage for vertex data.
+    存储顶点数据。
 
     @class
-    @prop {WebGLRenderingContext} gl The WebGL context.
-    @prop {WebGLBuffer} buffer Allocated buffer storage.
-    @prop {GLEnum} type The type of data stored in the buffer.
-    @prop {number} itemSize Number of array elements per vertex.
-    @prop {number} numItems Number of vertices represented.
-    @prop {GLEnum} usage The usage pattern of the buffer.
-    @prop {boolean} indexArray Whether this is an index array.
-    @prop {GLEnum} binding GL binding point (ARRAY_BUFFER or ELEMENT_ARRAY_BUFFER).
-    @prop {Object} appState Tracked GL state.
+    @prop {WebGLRenderingContext} gl WebGL 上下文
+    @prop {WebGLBuffer} buffer 分配的缓冲对象。
+    @prop {GLEnum} type 存储在缓冲中的数据类型。
+    @prop {number} itemSize 每顶点数组元素数量。
+    @prop {number} numItems 表示的定顶点数量。
+    @prop {GLEnum} usage 缓冲的使用模式。
+    @prop {boolean} indexArray 是否是一个索引数组。
+    @prop {GLEnum} binding GL绑定点（ARRAY_BUFFER 或 ELEMENT_ARRAY_BUFFER）。
+    @prop {Object} appState 跟踪的GL状态。
 */
 class VertexBuffer {
 
@@ -107,19 +107,18 @@ class VertexBuffer {
     }
 
     /**
-        Restore vertex buffer after context loss.
+        在上下文丢失后恢复顶点缓冲。
 
         @method
-        @param {ArrayBufferView|number} data Buffer data itself or the total 
-            number of elements to be allocated.
-        @return {VertexBuffer} The VertexBuffer object.
+        @param {ArrayBufferView|number} data 缓冲数据本身或分配的元素总数。
+        @return {VertexBuffer} 顶点缓冲对象。
     */
     restore(data) {
         if (!data) {
             data = this.numItems * this.itemSize * this.numColumns * CONSTANTS.TYPE_SIZE[this.type];
         }
 
-        // Don't want to update vertex array bindings
+        // 不要更新顶点数组的绑定
         if (this.appState.vertexArray) {
             this.gl.bindVertexArray(null);
             this.appState.vertexArray = null;
@@ -134,15 +133,14 @@ class VertexBuffer {
     }
 
     /**
-        Update data in this buffer. NOTE: the data must fit
-        the originally-allocated buffer!
+        更新这个缓冲中的数据。注意：data 必须与已分配的缓冲相符。
 
         @method
-        @param {VertexBufferView} data Data to store in the buffer.
-        @return {VertexBuffer} The VertexBuffer object.
+        @param {VertexBufferView} data 要存储到缓冲的数据。
+        @return {VertexBuffer} 顶点缓冲对象。
     */
     data(data) {
-        // Don't want to update vertex array bindings
+        // 不要更新顶点数组的绑定
         if (this.appState.vertexArray) {
             this.gl.bindVertexArray(null);
             this.appState.vertexArray = null;
@@ -156,10 +154,10 @@ class VertexBuffer {
     }
 
     /**
-        Delete this array buffer.
+        删除这个顶点缓冲。
 
         @method
-        @return {VertexBuffer} The VertexBuffer object.
+        @return {VertexBuffer} 顶点缓冲对象。
     */
     delete() {
         if (this.buffer) {

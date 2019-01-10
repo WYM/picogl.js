@@ -27,18 +27,18 @@ const CONSTANTS = require("./constants");
 const TEXTURE_FORMAT_DEFAULTS = require("./texture-format-defaults");
 
 /**
-    Cubemap for environment mapping.
+    用于环境映射的立方体贴图（Cubemap）。
 
     @class
-    @prop {WebGLRenderingContext} gl The WebGL context.
-    @prop {WebGLTexture} texture Handle to the texture.
-    @prop {GLEnum} type Type of data stored in the texture.
-    @prop {GLEnum} format Layout of texture data.
-    @prop {GLEnum} internalFormat Internal arrangement of the texture data.
-    @prop {Number} currentUnit The current texture unit this cubemap is bound to.
-    @prop {boolean} flipY Whether the y-axis is flipped for this cubemap.
-    @prop {boolean} premultiplyAlpha Whether alpha should be pre-multiplied when loading this cubemap.
-    @prop {Object} appState Tracked GL state.
+    @prop {WebGLRenderingContext} gl WebGL 上下文。
+    @prop {WebGLTexture} texture 贴图句柄。
+    @prop {GLEnum} type 贴图中存储的数据类型。
+    @prop {GLEnum} format 贴图数据布局。
+    @prop {GLEnum} internalFormat 贴图数据内部排列。
+    @prop {Number} currentUnit 当前 Cubemap 绑定到的贴图单元。
+    @prop {boolean} flipY 当前 Cubemap 的Y坐标是否翻转。
+    @prop {boolean} premultiplyAlpha 加载 Cubemap 时是否需要预乘 alpha。
+    @prop {Object} appState 跟踪的GL状态。
 */
 class Cubemap {
 
@@ -52,7 +52,7 @@ class Cubemap {
         this.internalFormat = options.internalFormat !== undefined ? options.internalFormat : TEXTURE_FORMAT_DEFAULTS[this.type][this.format];
         this.appState = appState;
         
-        // -1 indicates unbound
+        // -1 代表无约束
         this.currentUnit = -1;
 
         let negX = options.negX;
@@ -94,23 +94,23 @@ class Cubemap {
     }
 
     /**
-        Restore cubemap after context loss.
+        在上下文丢失后恢复 Cubemap。
 
         @method
-        @param {Object} [options] Texture options.
-        @param {DOMElement|ArrayBufferView} [options.negX] The image data for the negative X direction.
-                Can be any format that would be accepted by texImage2D.
-        @param {DOMElement|ArrayBufferView} [options.posX] The image data for the positive X direction.
-                Can be any format that would be accepted by texImage2D.
-        @param {DOMElement|ArrayBufferView} [options.negY] The image data for the negative Y direction.
-                Can be any format that would be accepted by texImage2D.
-        @param {DOMElement|ArrayBufferView} [options.posY] The image data for the positive Y direction.
-                Can be any format that would be accepted by texImage2D.
-        @param {DOMElement|ArrayBufferView} [options.negZ] The image data for the negative Z direction.
-                Can be any format that would be accepted by texImage2D.
-        @param {DOMElement|ArrayBufferView} [options.posZ] The image data for the positive Z direction.
-                Can be any format that would be accepted by texImage2D.
-        @return {Cubemap} The Cubemap object.
+        @param {Object} [options] 贴图选项。
+        @param {DOMElement|ArrayBufferView} [options.negX] 负X方向的图像数据。
+                可以是能够被 texImage2D 接受的任何类型。
+        @param {DOMElement|ArrayBufferView} [options.posX] 正X方向的图像数据。
+                可以是能够被 texImage2D 接受的任何类型。
+        @param {DOMElement|ArrayBufferView} [options.negY] 负Y方向的图像数据。
+                可以是能够被 texImage2D 接受的任何类型。
+        @param {DOMElement|ArrayBufferView} [options.posY] 正Y方向的图像数据。
+                可以是能够被 texImage2D 接受的任何类型。
+        @param {DOMElement|ArrayBufferView} [options.negZ] 负Z方向的图像数据。
+                可以是能够被 texImage2D 接受的任何类型。
+        @param {DOMElement|ArrayBufferView} [options.posZ] 正Z方向的图像数据。
+                可以是能够被 texImage2D 接受的任何类型。
+        @return {Cubemap} Cubemap 对象。
     */
     restore(options = CONSTANTS.DUMMY_OBJECT) {
         this.texture = this.gl.createTexture();
@@ -162,10 +162,10 @@ class Cubemap {
     }
 
     /**
-        Delete this cubemap.
+        删除这个 Cubemap。
 
         @method
-        @return {Cubemap} The Cubemap object.
+        @return {Cubemap} Cubemap 对象。
     */
     delete() {
         if (this.texture) {
@@ -179,11 +179,11 @@ class Cubemap {
     }
 
     /**
-        Bind this cubemap to a texture unit.
+        将这个Cubemap对象绑定到贴图单元。
 
         @method
         @ignore
-        @return {Cubemap} The Cubemap object.
+        @return {Cubemap} Cubemap 对象。
     */
     bind(unit) {
         let currentTexture = this.appState.textures[unit];

@@ -26,15 +26,15 @@
 const CONSTANTS = require("./constants");
 
 /**
-    Offscreen drawing attachment.
+    离屏绘图附件。
 
     @class
-    @prop {WebGLRenderingContext} gl The WebGL context.
-    @prop {WebGLRenderbuffer} renderbuffer Handle to the renderbuffer.
-    @prop {number} width Renderbuffer width.
-    @prop {number} height Renderbuffer height.
-    @prop {GLEnum} internalFormat Internal arrangement of the renderbuffer data.
-    @prop {number} samples Number of MSAA samples.
+    @prop {WebGLRenderingContext} gl WebGL 上下文。
+    @prop {WebGLRenderbuffer} renderbuffer renderbuffer句柄。
+    @prop {number} width Renderbuffer 宽度
+    @prop {number} height Renderbuffer 高度。
+    @prop {GLEnum} internalFormat RenderBuffer 数据的内部排列。
+    @prop {number} samples MSAA 采样数。
 */
 class Renderbuffer {
     constructor(gl, width, height, internalFormat, samples = 0) {
@@ -48,10 +48,10 @@ class Renderbuffer {
     }
 
     /**
-        Restore renderbuffer after context loss.
+        在上下文丢失后恢复 renderbuffer。
 
         @method
-        @return {Renderbuffer} The Renderbuffer object.
+        @return {Renderbuffer} Renderbuffer 对象。
     */
     restore() {
         this.renderbuffer = this.gl.createRenderbuffer();
@@ -61,12 +61,12 @@ class Renderbuffer {
     }
 
     /**
-        Resize the renderbuffer.
+        重设 RenderBuffer 大小。
 
         @method
-        @param {number} width New width of the renderbuffer.
-        @param {number} height New height of the renderbuffer.
-        @return {Renderbuffer} The Renderbuffer object.
+        @param {number} width renderbuffer 的宽度。
+        @param {number} height renderbuffer 的高度。
+        @return {Renderbuffer} Renderbuffer 对象。
     */
     resize(width, height) {
         this.width = width;
@@ -79,10 +79,10 @@ class Renderbuffer {
     }
 
     /**
-        Delete this renderbuffer.
+        删除这个 RenderBuffer。
 
         @method
-        @return {Renderbuffer} The Renderbuffer object.
+        @return {Renderbuffer} RenderBuffer 对象。
     */
     delete() {
         this.gl.deleteRenderbuffer(this.renderbuffer);

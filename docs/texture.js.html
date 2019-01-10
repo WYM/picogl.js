@@ -57,26 +57,25 @@ const TEXTURE_FORMAT_DEFAULTS = require("./texture-format-defaults");
 const DUMMY_ARRAY = new Array(1);
 
 /**
-    General-purpose texture.
+    通用纹理贴图。
 
     @class
-    @prop {WebGLRenderingContext} gl The WebGL context.
-    @prop {WebGLTexture} texture Handle to the texture.
-    @prop {WebGLSamler} sampler Sampler object.
-    @prop {number} width Texture width.
-    @prop {number} height Texture height.
-    @prop {number} depth Texture depth.
-    @prop {GLEnum} binding Binding point for the texture.
-    @prop {GLEnum} type Type of data stored in the texture.
-    @prop {GLEnum} format Layout of texture data.
-    @prop {GLEnum} internalFormat Internal arrangement of the texture data.
-    @prop {number} currentUnit The current texture unit this texture is bound to.
-    @prop {boolean} is3D Whether this texture contains 3D data.
-    @prop {boolean} flipY Whether the y-axis is flipped for this texture.
-    @prop {boolean} premultiplyAlpha Whether alpha should be pre-multiplied when loading this texture.
-    @prop {boolean} mipmaps Whether this texture is using mipmap filtering 
-        (and thus should have a complete mipmap chain).
-    @prop {Object} appState Tracked GL state.
+    @prop {WebGLRenderingContext} gl WebGL 上下文。
+    @prop {WebGLTexture} texture 纹理贴图句柄。
+    @prop {WebGLSamler} sampler 采样对象。
+    @prop {number} width 贴图宽度。
+    @prop {number} height 贴图高度。
+    @prop {number} depth 贴图深度。
+    @prop {GLEnum} binding 贴图的绑定点。
+    @prop {GLEnum} type 贴图数据类型。
+    @prop {GLEnum} format 贴图数据布局。
+    @prop {GLEnum} internalFormat 贴图数据的内部排列。
+    @prop {number} currentUnit 当前绑定到的贴图单元。
+    @prop {boolean} is3D 贴图是否包包含 3D 数据。
+    @prop {boolean} flipY 贴图的Y坐标是否翻转。
+    @prop {boolean} premultiplyAlpha 是否在加载时对贴图的alpha进行预乘。
+    @prop {boolean} mipmaps 贴图是否使用 mipmap 过滤（并因此需要一条完整的 mipmap 链）。
+    @prop {Object} appState 跟踪的GL状态。
 */
 class Texture {
     constructor(gl, appState, binding, image, width = image.width, height = image.height, depth, is3D, options = CONSTANTS.DUMMY_OBJECT) {
@@ -97,8 +96,7 @@ class Texture {
         this.compressed = !!(TEXTURE_FORMAT_DEFAULTS.COMPRESSED_TYPES[options.format] || TEXTURE_FORMAT_DEFAULTS.COMPRESSED_TYPES[options.internalFormat]);
         
         if (this.compressed) {
-            // For compressed textures, just need to provide one of format, internalFormat.
-            // The other will be the same.
+            // 对于压缩纹理，只需要提供一个 format 和 internalFormat
             this.format = options.format !== undefined ? options.format : options.internalFormat;
             this.internalFormat = options.internalFormat !== undefined ? options.internalFormat : options.format;
         } else {
@@ -106,10 +104,10 @@ class Texture {
             this.internalFormat = options.internalFormat !== undefined ? options.internalFormat : TEXTURE_FORMAT_DEFAULTS[this.type][this.format];
         }
 
-        // -1 indicates unbound
+        // -1 代表未约束。
         this.currentUnit = -1;
 
-        // Sampling parameters
+        // 采样参数
         let {
             minFilter = image ? CONSTANTS.LINEAR_MIPMAP_NEAREST : CONSTANTS.NEAREST,
             magFilter = image ? CONSTANTS.LINEAR : CONSTANTS.NEAREST,
@@ -145,13 +143,12 @@ class Texture {
     }
 
     /**
-        Restore texture after context loss.
+        在上下文丢失后恢复贴图。
 
         @method
-        @param {DOMElement|ArrayBufferView|Array} [image] Image data. An array can be passed to manually set all levels 
-            of the mipmap chain. If a single level is passed and mipmap filtering is being used,
-            generateMipmap() will be called to produce the remaining levels.
-        @return {Texture} The Texture object.
+        @param {DOMElement|ArrayBufferView|Array} [image] 图像数据。 可以传入一个数组设定所有等级的 mipmap 链。如果启
+            用 mipmap 过滤后只传入了单一的等级，将会调用 generateMipmap() 生成其余等级的 mipmap 。
+        @return {Texture} 贴图对象。
     */
     restore(image) {
         this.texture = null;
@@ -165,13 +162,13 @@ class Texture {
     }
 
     /**
-        Re-allocate texture storage.
+        重新分配贴图存储空间。
 
         @method
-        @param {number} width Image width.
-        @param {number} height Image height.
-        @param {number} [depth] Image depth or number of images. Required when passing 3D or texture array data.
-        @return {Texture} The Texture object.
+        @param {number} width 图像宽度。
+        @param {number} height 图像高度。
+        @param {number} [depth] 图像深度或数量。在传递 3D 贴图或贴图数组数据时需要。
+        @return {Texture} 贴图对象。
     */
     resize(width, height, depth) {
         depth = depth || 0;
@@ -236,15 +233,13 @@ class Texture {
     }
 
     /**
-        Set the image data for the texture. An array can be passed to manually set all levels 
-        of the mipmap chain. If a single level is passed and mipmap filtering is being used,
-        generateMipmap() will be called to produce the remaining levels.
-        NOTE: the data must fit the currently-allocated storage!
+        设定贴图的图像数据。可以传入一个数组设定所有等级的 mipmap 链。如果启
+        用 mipmap 过滤后只传入了单一的等级，将会调用 generateMipmap() 生成
+        其余等级的 mipmap 。注意：数据可能使用当前已经分配的空间！
 
         @method
-        @param {ImageElement|ArrayBufferView|Array} data Image data. If an array is passed, it will be 
-            used to set mip map levels.
-        @return {Texture} The Texture object.
+        @param {ImageElement|ArrayBufferView|Array} data 图像数据。如果传入数组，数据将会用来设定 mipmap 等级。
+        @return {Texture} 贴图对象。
     */
     data(data) {
         if (!Array.isArray(data)) {
@@ -299,10 +294,10 @@ class Texture {
     }
 
     /**
-        Delete this texture.
+        删除这个贴图。
 
         @method
-        @return {Texture} The Texture object.
+        @return {Texture} 贴图对象。
     */
     delete() {
         if (this.texture) {
@@ -319,11 +314,11 @@ class Texture {
     }
 
     /**
-        Bind this texture to a texture unit.
+        将这个贴图绑定到贴图单元。
 
         @method
         @ignore
-        @return {Texture} The Texture object.
+        @return {Texture} 贴图对象。
     */
     bind(unit) {
         let currentTexture = this.appState.textures[unit];
@@ -366,7 +361,7 @@ module.exports = Texture;
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Nov 12 2018 08:21:36 GMT-0500 (GMT-05:00)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Jan 09 2019 21:24:54 GMT+0800 (GMT+08:00)
 </footer>
 
 <script> prettyPrint(); </script>

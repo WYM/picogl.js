@@ -30,7 +30,7 @@
     
         <h2><span class="attribs"><span class="type-signature"></span></span>Timer<span class="signature">()</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">Rendering timer.</div>
+            <div class="class-description">渲染计时器。</div>
         
     
 </header>
@@ -106,7 +106,7 @@
 
             
 
-            <td class="description last">The WebGL context.</td>
+            <td class="description last">WebGL 上下文。</td>
         </tr>
 
     
@@ -129,7 +129,7 @@
 
             
 
-            <td class="description last">Timer for CPU. Will be window.performance, if available, or window.Date.</td>
+            <td class="description last">CPU 计时器。优先使用 window.performance，如果不支持则使用 window.Date。</td>
         </tr>
 
     
@@ -152,8 +152,7 @@
 
             
 
-            <td class="description last">Whether the gpu timing is available (EXT_disjoint_timer_query_webgl2 or
-            EXT_disjoint_timer_query are supported).</td>
+            <td class="description last">GPU 计时器是否可用（取决于是否支持 EXT_disjoint_timer_query_webgl2 或 EXT_disjoint_timer_query）。</td>
         </tr>
 
     
@@ -176,7 +175,7 @@
 
             
 
-            <td class="description last">Timer query object for GPU (if gpu timing is supported).</td>
+            <td class="description last">GPU 时间查询对象（仅在支持 GPU 计时器时有效）。</td>
         </tr>
 
     
@@ -199,7 +198,7 @@
 
             
 
-            <td class="description last">Whether a gpu timer query is currently in progress.</td>
+            <td class="description last">是否有正在进行中的 GPU 时间查询操作。</td>
         </tr>
 
     
@@ -222,7 +221,7 @@
 
             
 
-            <td class="description last">When the last CPU timing started.</td>
+            <td class="description last">最后一次 CPU 计时器启动时间。</td>
         </tr>
 
     
@@ -245,7 +244,7 @@
 
             
 
-            <td class="description last">Time spent on CPU during last timing. Only valid if ready() returns true.</td>
+            <td class="description last">上次CPU计时花费的时间。仅在 ready() 返回 true 时有效。</td>
         </tr>
 
     
@@ -268,8 +267,8 @@
 
             
 
-            <td class="description last">Time spent on GPU during last timing. Only valid if ready() returns true.
-            Will remain 0 if extension EXT_disjoint_timer_query_webgl2 is unavailable.</td>
+            <td class="description last">上次GPU计时花费的时间。仅在 ready() 返回 true 时有效。
+            如果 EXT_disjoint_timer_query_webgl2 扩展不可用，值固定为 0。</td>
         </tr>
 
     
@@ -308,7 +307,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="timer.js.html">timer.js</a>, <a href="timer.js.html#line44">line 44</a>
+        <a href="timer.js.html">timer.js</a>, <a href="timer.js.html#line43">line 43</a>
     </li></ul></dd>
     
 
@@ -370,7 +369,7 @@
 
 
 <div class="description">
-    Delete this timer.
+    删除这个 Timer。
 </div>
 
 
@@ -414,7 +413,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="timer.js.html">timer.js</a>, <a href="timer.js.html#line159">line 159</a>
+        <a href="timer.js.html">timer.js</a>, <a href="timer.js.html#line157">line 157</a>
     </li></ul></dd>
     
 
@@ -441,7 +440,7 @@
 
         
 <div class="param-desc">
-    The Timer object.
+    计时器对象。
 </div>
 
 
@@ -478,7 +477,7 @@
 
 
 <div class="description">
-    Stop timing.
+    停止计时器。
 </div>
 
 
@@ -522,7 +521,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="timer.js.html">timer.js</a>, <a href="timer.js.html#line111">line 111</a>
+        <a href="timer.js.html">timer.js</a>, <a href="timer.js.html#line110">line 110</a>
     </li></ul></dd>
     
 
@@ -549,7 +548,7 @@
 
         
 <div class="param-desc">
-    The Timer object.
+    计时器对象。
 </div>
 
 
@@ -586,10 +585,9 @@
 
 
 <div class="description">
-    Check if timing results are available. If
-        this method returns true, the cpuTime and
-        gpuTime properties will be set to valid
-        values.
+    检查计时结果是否可用。仅当这个方法返回true时，
+        cpuTime 和 gpuTime 这两个属性才会被设为有效
+        的值。
 </div>
 
 
@@ -633,7 +631,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="timer.js.html">timer.js</a>, <a href="timer.js.html#line133">line 133</a>
+        <a href="timer.js.html">timer.js</a>, <a href="timer.js.html#line131">line 131</a>
     </li></ul></dd>
     
 
@@ -660,7 +658,7 @@
 
         
 <div class="param-desc">
-    If results are available.
+    结果是否可用。
 </div>
 
 
@@ -697,7 +695,7 @@
 
 
 <div class="description">
-    Restore timer after context loss.
+    在上下文丢失后恢复计时器。
 </div>
 
 
@@ -741,7 +739,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="timer.js.html">timer.js</a>, <a href="timer.js.html#line66">line 66</a>
+        <a href="timer.js.html">timer.js</a>, <a href="timer.js.html#line65">line 65</a>
     </li></ul></dd>
     
 
@@ -768,7 +766,7 @@
 
         
 <div class="param-desc">
-    The Timer object.
+    计时器对象。
 </div>
 
 
@@ -805,7 +803,7 @@
 
 
 <div class="description">
-    Start timing.
+    启动计时器。
 </div>
 
 
@@ -849,7 +847,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="timer.js.html">timer.js</a>, <a href="timer.js.html#line91">line 91</a>
+        <a href="timer.js.html">timer.js</a>, <a href="timer.js.html#line90">line 90</a>
     </li></ul></dd>
     
 
@@ -876,7 +874,7 @@
 
         
 <div class="param-desc">
-    The Timer object.
+    计时器对象。
 </div>
 
 
@@ -921,7 +919,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Nov 12 2018 08:21:36 GMT-0500 (GMT-05:00)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Jan 09 2019 21:24:54 GMT+0800 (GMT+08:00)
 </footer>
 
 <script> prettyPrint(); </script>
