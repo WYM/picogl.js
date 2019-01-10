@@ -16,21 +16,20 @@ PicoGL.js 是基于 WebGL 2 的最小渲染库。它能够为熟悉 WebGL 2 渲�
     // 创建 Program
     var program = app.createProgram(vertexShaderSource, fragmentShaderSource);
 
-    // Create a buffer of vertex attributes
+    // 创建顶点属性缓冲
     var positions = app.createVertexBuffer(PicoGL.FLOAT, 2, new Float32Array([
         -0.5, -0.5,
          0.5, -0.5,
          0.0,  0.5
     ]));
 
-    // VertexArray manages attribute buffer state
+    // VertexArray 管理属性缓冲状态
     var vertexArray = app.createVertexArray()
     .vertexAttributeBuffer(0, positions);
 
-    // UniformBuffer allows multiple uniforms to be bound
-    // as a single block of memory.
-    // First part defines layout of the UniformBuffer.
-    // Second part updates values.
+    // UniformBuffer 允许将多个 uniform 绑定到单个内存块中。
+    // 第一部分定义了 UniformBuffer 的布局。
+    // 第二部分更新了值。
     var uniformBuffer = app.createUniformBuffer([
         PicoGL.FLOAT_VEC4,
         PicoGL.FLOAT_VEC4
@@ -39,12 +38,11 @@ PicoGL.js 是基于 WebGL 2 的最小渲染库。它能够为熟悉 WebGL 2 渲�
     .set(1, new Float32Array([0.0, 0.0, 1.0, 0.7]))
     .update();
 
-    // Create DrawCall from Program and VertexArray (both required),
-    // and a UniformBuffer.
+    // 根据程序和顶点数组创建渲染提交（缺一不可），还有一个 UniformBuffer。
     var drawCall = app.createDrawCall(program, vertexArray)
     .uniformBlock("ColorUniforms", uniformBuffer);
 
-    // Draw
+    // 绘制
     app.clear();
     drawCall.draw();
 
@@ -86,7 +84,7 @@ PicoGL.js 简化了 WebGL 2 特性复杂的用法。例如多渲染目标(MRT)�
     .clearColor(0.0, 0.0, 0.0, 1.0);
 
 
-    // Texture render targets
+    // 作为渲染目标的纹理
     var colorTarget0 = app.createTexture2D(app.width, app.height);
     var colorTarget1 = app.createTexture2D(app.width, app.height);
     var depthTarget = app.createTexture2D(app.width, app.height, {
@@ -94,29 +92,27 @@ PicoGL.js 简化了 WebGL 2 特性复杂的用法。例如多渲染目标(MRT)�
     });
 
 
-    // Create framebuffer with color targets at attachments 
-    // 0 and 1, and a depth target.
+    // 为渲染目标创建帧缓冲
     var framebuffer = app.createFramebuffer()
     .colorTarget(0, colorTarget0)
     .colorTarget(1, colorTarget1)
     .depthTarget(depthTarget);
     
-    // ... set up programs and vertex arrays for offscreen and
-    // main draw passes...
+    // ... 为离屏和主绘制 pass 创建 Program 和顶点数组 ...
     
     var offscreenDrawCall = app.createDrawCall(offscreenProgram, offscreenVAO);
 
-    // Bind main program texture samplers to framebuffer targets
+    // 将主 Program 贴图采样绑定到帧缓冲目标
     var mainDrawCall = app.createDrawCall(mainProgram, mainVAO)
     .texture("texture1", framebuffer.colorAttachments[0])
     .texture("texture2", framebuffer.colorAttachments[1])
     .texture("depthTexture", framebuffer.depthAttachment);
 
-    // Offscreen pass
+    // 离屏 pass
     app.drawFramebuffer(framebuffer).clear();
     offscreenDrawCall.draw();
     
-    // Main draw pass
+    // 主绘制 pass
     app.defaultDrawFramebuffer().clear()
     mainDrawCall.draw();
 ```
@@ -127,9 +123,9 @@ PicoGL.js 简化了 WebGL 2 特性复杂的用法。例如多渲染目标(MRT)�
     var app = PicoGL.createApp(canvas)
     .clearColor(0.0, 0.0, 0.0, 1.0);
     
-    // ... set up program and vertex array...
+    // ... 创建 Program 和顶点数组 ...
 
-    // Layout is std140
+    // 使用的是 std140 布局
     var uniformBuffer = app.createUniformBuffer([
         PicoGL.FLOAT_MAT4,
         PicoGL.FLOAT_VEC4,
@@ -140,7 +136,7 @@ PicoGL.js 简化了 WebGL 2 特性复杂的用法。例如多渲染目标(MRT)�
     .set(1, float32Vector)
     .set(2, int32Vector)
     .set(3, scalar)
-    .update();      // Data only sent to GPU when update() is called
+    .update();      // update() 被调用时，数据只会被传给 GPU
 
     var drawCall = app.createDrawCall(program, vertexArray)
     .uniformBlock("UniformBlock", uniformBuffer);
