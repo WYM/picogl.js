@@ -81,14 +81,14 @@ class Framebuffer {
     }
 
     /**
-        Attach a color target to this framebuffer.
+        为这个帧缓冲附加一个颜色目标。
 
         @method
-        @param {number} index Color attachment index.
-        @param {Texture|Cubemap|Renderbuffer} attachment The texture, cubemap or renderbuffer to attach.
-        @param {GLEnum} [target] The texture target or layer to attach. If the texture is 3D or a texture array,
-            defaults to 0, otherwise to TEXTURE_2D. Ignored for renderbuffers.
-        @return {Framebuffer} The Framebuffer object.
+        @param {number} index 颜色附加索引。
+        @param {Texture|Cubemap|Renderbuffer} attachment 要附加的纹理、立方体纹理或渲染缓冲。
+        @param {GLEnum} [target] 要附加的纹理目标或层级。如果是3D纹理或纹理数组，默认为0，
+            否则为 TEXTURE_2D。渲染缓冲忽略该参数。
+        @return {Framebuffer} Framebuffer 对象。
     */
     colorTarget(index, attachment, target = attachment.is3D ? 0 : CONSTANTS.TEXTURE_2D) {
 
@@ -133,13 +133,13 @@ class Framebuffer {
     }
 
     /**
-        Attach a depth target to this framebuffer.
+        为这个帧缓冲附加一个深度目标。
 
         @method
-        @param {Texture|Cubemap|Renderbuffer} texture The texture, cubemap or renderbuffer to attach.
-        @param {GLEnum} [target] The texture target or layer to attach. If the texture is 3D or a texture array or renderbuffer,
-            defaults to 0, otherwise to TEXTURE_2D. Ignored for renderbuffers.
-        @return {Framebuffer} The Framebuffer object.
+        @param {Texture|Cubemap|Renderbuffer} texture 要附加的纹理、立方体纹理或渲染缓冲。
+        @param {GLEnum} [target] 要附加的纹理目标或层级。如果是3D纹理或纹理数组，默认为0，
+            否则为 TEXTURE_2D。渲染缓冲忽略该参数。
+        @return {Framebuffer} Framebuffer 对象。
     */
     depthTarget(attachment, target = attachment.is3D ? 0 : CONSTANTS.TEXTURE_2D) {
 
@@ -286,8 +286,8 @@ class Framebuffer {
     }
 
     /**
-        Bind for a framebuffer state update.
-        Capture current binding so we can restore it later.
+        绑定一个帧缓冲状态更新。
+        捕获当前的绑定以便我们稍后恢复它。
 
         @method
         @ignore
@@ -304,7 +304,7 @@ class Framebuffer {
     }
 
     /**
-        Bind restore previous binding after state update
+        在状态更新后恢复先前的绑定。
 
         @method
         @ignore
