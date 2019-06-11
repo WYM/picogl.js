@@ -21,9 +21,7 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ///////////////////////////////////////////////////////////////////////////////////
 
-"use strict";
-
-const CONSTANTS = require("./constants");
+import { GL } from "./constants.js";
 
 /**
     Storage for uniform data. Data is stored in std140 layout.
@@ -39,7 +37,7 @@ const CONSTANTS = require("./constants");
     @prop {number} size The size of the buffer (in 4-byte items).
     @prop {GLEnum} usage Usage pattern of the buffer.
 */
-class UniformBuffer {
+export class UniformBuffer {
 
     constructor(gl, appState, layout, usage = gl.DYNAMIC_DRAW) {
         this.gl = gl;
@@ -58,90 +56,90 @@ class UniformBuffer {
         for (let i = 0, len = layout.length; i < len; ++i) {
             let type = layout[i];
             switch(type) {
-                case CONSTANTS.FLOAT:
-                case CONSTANTS.INT:
-                case CONSTANTS.UNSIGNED_INT:
-                case CONSTANTS.BOOL:
+                case GL.FLOAT:
+                case GL.INT:
+                case GL.UNSIGNED_INT:
+                case GL.BOOL:
                     this.offsets[i] = this.size;
                     this.sizes[i] = 1;
 
-                    if (type === CONSTANTS.INT) {
-                        this.types[i] = CONSTANTS.INT;
-                    } else if (this.type === CONSTANTS.UNSIGNED_INT) {
-                        this.types[i] = CONSTANTS.UNSIGNED_INT;
+                    if (type === GL.INT) {
+                        this.types[i] = GL.INT;
+                    } else if (this.type === GL.UNSIGNED_INT) {
+                        this.types[i] = GL.UNSIGNED_INT;
                     } else {
-                        this.types[i] = CONSTANTS.FLOAT;
+                        this.types[i] = GL.FLOAT;
                     }
 
                     this.size++;
                     break;
-                case CONSTANTS.FLOAT_VEC2:
-                case CONSTANTS.INT_VEC2:
-                case CONSTANTS.UNSIGNED_INT_VEC2:
-                case CONSTANTS.BOOL_VEC2:
+                case GL.FLOAT_VEC2:
+                case GL.INT_VEC2:
+                case GL.UNSIGNED_INT_VEC2:
+                case GL.BOOL_VEC2:
                     this.size += this.size % 2;
                     this.offsets[i] = this.size;
                     this.sizes[i] = 2;
 
-                    if (type === CONSTANTS.INT_VEC2) {
-                        this.types[i] = CONSTANTS.INT;
-                    } else if (this.type === CONSTANTS.UNSIGNED_INT_VEC2) {
-                        this.types[i] = CONSTANTS.UNSIGNED_INT;
+                    if (type === GL.INT_VEC2) {
+                        this.types[i] = GL.INT;
+                    } else if (this.type === GL.UNSIGNED_INT_VEC2) {
+                        this.types[i] = GL.UNSIGNED_INT;
                     } else {
-                        this.types[i] = CONSTANTS.FLOAT;
+                        this.types[i] = GL.FLOAT;
                     }
 
                     this.size += 2;
                     break;
-                case CONSTANTS.FLOAT_VEC3:
-                case CONSTANTS.INT_VEC3:
-                case CONSTANTS.UNSIGNED_INT_VEC3:
-                case CONSTANTS.BOOL_VEC3:
-                case CONSTANTS.FLOAT_VEC4:
-                case CONSTANTS.INT_VEC4:
-                case CONSTANTS.UNSIGNED_INT_VEC4:
-                case CONSTANTS.BOOL_VEC4:
+                case GL.FLOAT_VEC3:
+                case GL.INT_VEC3:
+                case GL.UNSIGNED_INT_VEC3:
+                case GL.BOOL_VEC3:
+                case GL.FLOAT_VEC4:
+                case GL.INT_VEC4:
+                case GL.UNSIGNED_INT_VEC4:
+                case GL.BOOL_VEC4:
                     this.size += (4 - this.size % 4) % 4;
                     this.offsets[i] = this.size;
                     this.sizes[i] = 4;
 
-                    if (type === CONSTANTS.INT_VEC4 || type === CONSTANTS.INT_VEC3) {
-                        this.types[i] = CONSTANTS.INT;
-                    } else if (this.type === CONSTANTS.UNSIGNED_INT_VEC4 || this.type === CONSTANTS.UNSIGNED_INT_VEC3) {
-                        this.types[i] = CONSTANTS.UNSIGNED_INT;
+                    if (type === GL.INT_VEC4 || type === GL.INT_VEC3) {
+                        this.types[i] = GL.INT;
+                    } else if (this.type === GL.UNSIGNED_INT_VEC4 || this.type === GL.UNSIGNED_INT_VEC3) {
+                        this.types[i] = GL.UNSIGNED_INT;
                     } else {
-                        this.types[i] = CONSTANTS.FLOAT;
+                        this.types[i] = GL.FLOAT;
                     }
 
                     this.size += 4;
                     break;
-                case CONSTANTS.FLOAT_MAT2:
-                case CONSTANTS.FLOAT_MAT2x3:
-                case CONSTANTS.FLOAT_MAT2x4:
+                case GL.FLOAT_MAT2:
+                case GL.FLOAT_MAT2x3:
+                case GL.FLOAT_MAT2x4:
                     this.size += (4 - this.size % 4) % 4;
                     this.offsets[i] = this.size;
                     this.sizes[i] = 8;
-                    this.types[i] = CONSTANTS.FLOAT;
+                    this.types[i] = GL.FLOAT;
 
                     this.size += 8;
                     break;
-                case CONSTANTS.FLOAT_MAT3:
-                case CONSTANTS.FLOAT_MAT3x2:
-                case CONSTANTS.FLOAT_MAT3x4:
+                case GL.FLOAT_MAT3:
+                case GL.FLOAT_MAT3x2:
+                case GL.FLOAT_MAT3x4:
                     this.size += (4 - this.size % 4) % 4;
                     this.offsets[i] = this.size;
                     this.sizes[i] = 12;
-                    this.types[i] = CONSTANTS.FLOAT;
+                    this.types[i] = GL.FLOAT;
 
                     this.size += 12;
                     break;
-                case CONSTANTS.FLOAT_MAT4:
-                case CONSTANTS.FLOAT_MAT4x2:
-                case CONSTANTS.FLOAT_MAT4x3:
+                case GL.FLOAT_MAT4:
+                case GL.FLOAT_MAT4x2:
+                case GL.FLOAT_MAT4x3:
                     this.size += (4 - this.size % 4) % 4;
                     this.offsets[i] = this.size;
                     this.sizes[i] = 16;
-                    this.types[i] = CONSTANTS.FLOAT;
+                    this.types[i] = GL.FLOAT;
 
                     this.size += 16;
                     break;
@@ -153,9 +151,12 @@ class UniformBuffer {
         this.size += (4 - this.size % 4) % 4;
 
         this.data = new Float32Array(this.size);
-        this.dataViews[CONSTANTS.FLOAT] = this.data;
-        this.dataViews[CONSTANTS.INT] = new Int32Array(this.data.buffer);
-        this.dataViews[CONSTANTS.UNSIGNED_INT] = new Uint32Array(this.data.buffer);
+        this.dataViews[GL.FLOAT] = this.data;
+        this.dataViews[GL.INT] = new Int32Array(this.data.buffer);
+        this.dataViews[GL.UNSIGNED_INT] = new Uint32Array(this.data.buffer);
+
+        this.dirtyStart = this.size;
+        this.dirtyEnd = 0;
 
         this.restore();
     }
@@ -172,9 +173,9 @@ class UniformBuffer {
         }
 
         this.buffer = this.gl.createBuffer();
-        this.gl.bindBuffer(CONSTANTS.UNIFORM_BUFFER, this.buffer);
-        this.gl.bufferData(CONSTANTS.UNIFORM_BUFFER, this.size * 4, this.usage);
-        this.gl.bindBuffer(CONSTANTS.UNIFORM_BUFFER, null);
+        this.gl.bindBuffer(GL.UNIFORM_BUFFER, this.buffer);
+        this.gl.bufferData(GL.UNIFORM_BUFFER, this.size * 4, this.usage);
+        this.gl.bindBuffer(GL.UNIFORM_BUFFER, null);
 
         return this;
     }
@@ -190,11 +191,21 @@ class UniformBuffer {
     */
     set(index, value) {
         let view = this.dataViews[this.types[index]];
+        let offset = this.offsets[index];
+        let size = this.sizes[index];
 
         if (this.sizes[index] === 1)  {
-            view[this.offsets[index]] = value;
+            view[offset] = value;
         } else {
-            view.set(value, this.offsets[index]);
+            view.set(value, offset);
+        }
+
+        if (offset < this.dirtyStart) {
+            this.dirtyStart = offset;
+        }
+
+        if (this.dirtyEnd < offset + size) {
+            this.dirtyEnd = offset + size;
         }
 
         return this;
@@ -204,25 +215,22 @@ class UniformBuffer {
         Send stored buffer data to the GPU.
 
         @method
-        @param {number} [index] Index in the layout of item to send to the GPU. If ommited, entire buffer is sent.
         @return {UniformBuffer} The UniformBuffer object.
     */
-    update(index) {
-        let data;
-        let offset;
-        if (index === undefined) {
-            data = this.data;
-            offset = 0;
-        } else {
-            let begin = this.offsets[index];
-            let end = begin + this.sizes[index];
-            data = this.data.subarray(begin, end);
-            offset = begin * 4;
+    update() {
+        if (this.dirtyStart >= this.dirtyEnd) {
+            return this;
         }
+
+        let data = this.data.subarray(this.dirtyStart, this.dirtyEnd);
+        let offset = this.dirtyStart * 4;
 
         this.gl.bindBuffer(this.gl.UNIFORM_BUFFER, this.buffer);
         this.gl.bufferSubData(this.gl.UNIFORM_BUFFER, offset, data);
         this.gl.bindBuffer(this.gl.UNIFORM_BUFFER, null);
+
+        this.dirtyStart = this.size;
+        this.dirtyEnd = 0;
 
         return this;
     }
@@ -276,5 +284,3 @@ class UniformBuffer {
     }
 
 }
-
-module.exports = UniformBuffer;

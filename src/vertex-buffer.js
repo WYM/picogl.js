@@ -21,9 +21,16 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ///////////////////////////////////////////////////////////////////////////////////
 
-"use strict";
+import { GL, TYPE_SIZE } from "./constants.js";
 
-const CONSTANTS = require("./constants");
+const INTEGER_TYPES = {
+    [GL.BYTE]: true,
+    [GL.UNSIGNED_BYTE]: true,
+    [GL.SHORT]: true,
+    [GL.UNSIGNED_SHORT]: true,
+    [GL.INT]: true,
+    [GL.UNSIGNED_INT]: true
+};
 
 /**
     Storage for vertex data.
@@ -39,24 +46,24 @@ const CONSTANTS = require("./constants");
     @prop {GLEnum} binding GL binding point (ARRAY_BUFFER or ELEMENT_ARRAY_BUFFER).
     @prop {Object} appState Tracked GL state.
 */
-class VertexBuffer {
+export class VertexBuffer {
 
     constructor(gl, appState, type, itemSize, data, usage = gl.STATIC_DRAW, indexArray) {
         let numColumns;
         switch(type) {
-            case CONSTANTS.FLOAT_MAT4:
-            case CONSTANTS.FLOAT_MAT4x2:
-            case CONSTANTS.FLOAT_MAT4x3:
+            case GL.FLOAT_MAT4:
+            case GL.FLOAT_MAT4x2:
+            case GL.FLOAT_MAT4x3:
                 numColumns = 4;
                 break;
-            case CONSTANTS.FLOAT_MAT3:
-            case CONSTANTS.FLOAT_MAT3x2:
-            case CONSTANTS.FLOAT_MAT3x4:
+            case GL.FLOAT_MAT3:
+            case GL.FLOAT_MAT3x2:
+            case GL.FLOAT_MAT3x4:
                 numColumns = 3;
                 break;
-            case CONSTANTS.FLOAT_MAT2:
-            case CONSTANTS.FLOAT_MAT2x3:
-            case CONSTANTS.FLOAT_MAT2x4:
+            case GL.FLOAT_MAT2:
+            case GL.FLOAT_MAT2x3:
+            case GL.FLOAT_MAT2x4:
                 numColumns = 2;
                 break;
             default:
@@ -64,44 +71,51 @@ class VertexBuffer {
         }
 
         switch(type) {
-            case CONSTANTS.FLOAT_MAT4:
-            case CONSTANTS.FLOAT_MAT3x4:
-            case CONSTANTS.FLOAT_MAT2x4:
+            case GL.FLOAT_MAT4:
+            case GL.FLOAT_MAT3x4:
+            case GL.FLOAT_MAT2x4:
                 itemSize = 4;
-                type = CONSTANTS.FLOAT;
+                type = GL.FLOAT;
                 break;
-            case CONSTANTS.FLOAT_MAT3:
-            case CONSTANTS.FLOAT_MAT4x3:
-            case CONSTANTS.FLOAT_MAT2x3:
+            case GL.FLOAT_MAT3:
+            case GL.FLOAT_MAT4x3:
+            case GL.FLOAT_MAT2x3:
                 itemSize = 3;
-                type = CONSTANTS.FLOAT;
+                type = GL.FLOAT;
                 break;
-            case CONSTANTS.FLOAT_MAT2:
-            case CONSTANTS.FLOAT_MAT3x2:
-            case CONSTANTS.FLOAT_MAT4x2:
+            case GL.FLOAT_MAT2:
+            case GL.FLOAT_MAT3x2:
+            case GL.FLOAT_MAT4x2:
                 itemSize = 2;
-                type = CONSTANTS.FLOAT;
+                type = GL.FLOAT;
                 break;
         }
 
         let dataLength;
+        let byteLength;
         if (typeof data === "number") {
             dataLength = data;
-            data *= CONSTANTS.TYPE_SIZE[type];
+            if (type) {
+                data *= TYPE_SIZE[type];
+            }
+            byteLength = data;
         } else {
             dataLength = data.length;
+            byteLength = data.byteLength;
         }
 
         this.gl = gl;
         this.buffer = null;
         this.appState = appState;
         this.type = type;
-        this.itemSize = itemSize;
-        this.numItems = dataLength / (itemSize * numColumns);
+        this.itemSize = itemSize;  // In bytes for interleaved arrays.
+        this.numItems = type ? dataLength / (itemSize * numColumns) : byteLength / itemSize;
         this.numColumns = numColumns;
+        this.byteLength = byteLength;
         this.usage = usage;
-        this.indexArray = !!indexArray;
-        this.binding = this.indexArray ? gl.ELEMENT_ARRAY_BUFFER : gl.ARRAY_BUFFER;
+        this.indexArray = Boolean(indexArray);
+        this.integer = Boolean(INTEGER_TYPES[this.type]);
+        this.binding = this.indexArray ? GL.ELEMENT_ARRAY_BUFFER : GL.ARRAY_BUFFER;
 
         this.restore(data);
     }
@@ -116,7 +130,7 @@ class VertexBuffer {
     */
     restore(data) {
         if (!data) {
-            data = this.numItems * this.itemSize * this.numColumns * CONSTANTS.TYPE_SIZE[this.type];
+            data = this.byteLength;
         }
 
         // Don't want to update vertex array bindings
@@ -171,5 +185,3 @@ class VertexBuffer {
     }
 
 }
-
-module.exports = VertexBuffer;

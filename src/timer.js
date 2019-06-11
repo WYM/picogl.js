@@ -21,10 +21,8 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ///////////////////////////////////////////////////////////////////////////////////
 
-"use strict";
-
-const CONSTANTS = require("./constants");
-const Query = require("./query");
+import { GL, WEBGL_INFO } from "./constants.js";
+import { Query } from "./query.js";
 
 /**
     Rendering timer.
@@ -32,8 +30,6 @@ const Query = require("./query");
     @class
     @prop {WebGLRenderingContext} gl The WebGL context.
     @prop {Object} cpuTimer Timer for CPU. Will be window.performance, if available, or window.Date.
-    @prop {boolean} gpuTimer Whether the gpu timing is available (EXT_disjoint_timer_query_webgl2 or
-            EXT_disjoint_timer_query are supported).
     @prop {WebGLQuery} gpuTimerQuery Timer query object for GPU (if gpu timing is supported).
     @prop {boolean} gpuTimerQueryInProgress Whether a gpu timer query is currently in progress.
     @prop {number} cpuStartTime When the last CPU timing started.
@@ -41,13 +37,12 @@ const Query = require("./query");
     @prop {number} gpuTime Time spent on GPU during last timing. Only valid if ready() returns true.
             Will remain 0 if extension EXT_disjoint_timer_query_webgl2 is unavailable.
 */
-class Timer {
+export class Timer {
 
     constructor(gl) {
         this.gl = gl;
         this.cpuTimer = window.performance || window.Date;
 
-        this.gpuTimer = false;
         this.gpuTimerQuery = null;
 
         this.cpuStartTime = 0;
@@ -64,13 +59,11 @@ class Timer {
         @return {Timer} The Timer object.
     */
     restore() {
-        this.gpuTimer = !!(this.gl.getExtension("EXT_disjoint_timer_query_webgl2") || this.gl.getExtension("EXT_disjoint_timer_query"));
-        
-        if (this.gpuTimer) {
+        if (WEBGL_INFO.GPU_TIMER) {
             if (this.gpuTimerQuery) {
                 this.gpuTimerQuery.restore();
             } else {
-                this.gpuTimerQuery = new Query(this.gl, CONSTANTS.TIME_ELAPSED_EXT);
+                this.gpuTimerQuery = new Query(this.gl, GL.TIME_ELAPSED_EXT);
             }
         }
 
@@ -89,7 +82,7 @@ class Timer {
         @return {Timer} The Timer object.
     */
     start() {
-        if (this.gpuTimer) {
+        if (WEBGL_INFO.GPU_TIMER) {
             if (!this.gpuTimerQuery.active) {
                 this.gpuTimerQuery.begin();
                 this.cpuStartTime = this.cpuTimer.now();
@@ -109,7 +102,7 @@ class Timer {
         @return {Timer} The Timer object.
     */
     end() {
-        if (this.gpuTimer) {
+        if (WEBGL_INFO.GPU_TIMER) {
             if (!this.gpuTimerQuery.active) {
                 this.gpuTimerQuery.end();
                 this.cpuTime = this.cpuTimer.now() - this.cpuStartTime;
@@ -131,13 +124,13 @@ class Timer {
         @return {boolean} If results are available.
     */
     ready() {
-        if (this.gpuTimer) {
+        if (WEBGL_INFO.GPU_TIMER) {
             if (!this.gpuTimerQuery.active) {
                 return false;
             }
 
             var gpuTimerAvailable = this.gpuTimerQuery.ready();
-            var gpuTimerDisjoint = this.gl.getParameter(CONSTANTS.GPU_DISJOINT_EXT);
+            var gpuTimerDisjoint = this.gl.getParameter(GL.GPU_DISJOINT_EXT);
 
             if (gpuTimerAvailable && !gpuTimerDisjoint) {
                 this.gpuTime = this.gpuTimerQuery.result  / 1000000;
@@ -146,7 +139,7 @@ class Timer {
                 return false;
             }
         } else {
-            return !!this.cpuStartTime;
+            return Boolean(this.cpuStartTime);
         }
     }
 
@@ -160,12 +153,9 @@ class Timer {
         if (this.gpuTimerQuery) {
             this.gpuTimerQuery.delete();
             this.gpuTimerQuery = null;
-            this.gpuTimer = false;
         }
 
         return this;
     }
 
 }
-
-module.exports = Timer;

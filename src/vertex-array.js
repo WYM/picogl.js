@@ -18,9 +18,7 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ///////////////////////////////////////////////////////////////////////////////////
 
-"use strict";
-
-const CONSTANTS = require("./constants");
+import { GL, TYPE_SIZE, DUMMY_OBJECT } from "./constants.js";
 
 /**
     Organizes vertex buffer and attribute state.
@@ -31,21 +29,21 @@ const CONSTANTS = require("./constants");
     @prop {number} numElements Number of elements in the vertex array.
     @prop {boolean} indexed Whether this vertex array is set up for indexed drawing.
     @prop {GLenum} indexType Data type of the indices.
-    @prop {boolean} instanced Whether this vertex array is set up for instanced drawing.
     @prop {number} numInstances Number of instances to draw with this vertex array.
     @prop {Object} appState Tracked GL state.
 */
-class VertexArray {
-    
-    constructor(gl, appState, numElements = 0, numInstances = 0) {
+export class VertexArray {
+
+    constructor(gl, appState) {
         this.gl = gl;
         this.appState = appState;
         this.vertexArray = null;
-        this.numElements = numElements;
         this.indexType = null;
-        this.instancedBuffers = 0;
         this.indexed = false;
-        this.numInstances = numInstances;
+        this.numElements = 0;
+        this.numInstances = 1;
+        this.offsets = 0;
+        this.numDraws = 1;
     }
 
     /**
@@ -74,10 +72,18 @@ class VertexArray {
         @method
         @param {number} attributeIndex The attribute location to bind to.
         @param {VertexBuffer} vertexBuffer The VertexBuffer to bind.
+        @param {Object} [options] Attribute pointer options. These will override those provided in the
+            VertexBuffer.
+        @param {GLEnum} [options.type] Type of data stored in the buffer.
+        @param {GLEnum} [options.size] Number of components per vertex.
+        @param {GLEnum} [options.stride] Number of bytes between the start of data for each vertex.
+        @param {GLEnum} [options.offset] Number of bytes before the start of data for the first vertex.
+        @param {GLEnum} [options.normalized] Data is integer data that should be normalized to a float.
+        @param {GLEnum} [options.integer] Pass data as integers.
         @return {VertexArray} The VertexArray object.
     */
-    vertexAttributeBuffer(attributeIndex, vertexBuffer) {
-        this.attributeBuffer(attributeIndex, vertexBuffer, false, false, false);
+    vertexAttributeBuffer(attributeIndex, vertexBuffer, options = DUMMY_OBJECT) {
+        this.attributeBuffer(attributeIndex, vertexBuffer, options, false);
 
         return this;
     }
@@ -88,74 +94,18 @@ class VertexArray {
         @method
         @param {number} attributeIndex The attribute location to bind to.
         @param {VertexBuffer} vertexBuffer The VertexBuffer to bind.
+        @param {Object} [options] Attribute pointer options. These will override those provided in the
+            VertexBuffer.
+        @param {GLEnum} [options.type] Type of data stored in the buffer.
+        @param {GLEnum} [options.size] Number of components per vertex.
+        @param {GLEnum} [options.stride] Number of bytes between the start of data for each vertex.
+        @param {GLEnum} [options.offset] Number of bytes before the start of data for the first vertex.
+        @param {GLEnum} [options.normalized] Data is integer data that should be normalized to a float.
+        @param {GLEnum} [options.integer] Pass data as integers.
         @return {VertexArray} The VertexArray object.
     */
-    instanceAttributeBuffer(attributeIndex, vertexBuffer) {
-        this.attributeBuffer(attributeIndex, vertexBuffer, true, false, false);
-
-        return this;
-    }
-
-    /**
-        Bind an per-vertex integer attribute buffer to this vertex array.
-        Note that this refers to the attribute in the shader being an integer,
-        not the data stored in the vertex buffer.
-
-        @method
-        @param {number} attributeIndex The attribute location to bind to.
-        @param {VertexBuffer} vertexBuffer The VertexBuffer to bind.
-        @return {VertexArray} The VertexArray object.
-    */
-    vertexIntegerAttributeBuffer(attributeIndex, vertexBuffer) {
-        this.attributeBuffer(attributeIndex, vertexBuffer, false, true, false);
-
-        return this;
-    }
-
-    /**
-        Bind an per-instance integer attribute buffer to this vertex array.
-        Note that this refers to the attribute in the shader being an integer,
-        not the data stored in the vertex buffer.
-
-        @method
-        @param {number} attributeIndex The attribute location to bind to.
-        @param {VertexBuffer} vertexBuffer The VertexBuffer to bind.
-        @return {VertexArray} The VertexArray object.
-    */
-    instanceIntegerAttributeBuffer(attributeIndex, vertexBuffer) {
-        this.attributeBuffer(attributeIndex, vertexBuffer, true, true, false);
-
-        return this;
-    }
-
-    /**
-        Bind an per-vertex normalized attribute buffer to this vertex array.
-        Integer data in the vertex buffer will be normalized to [-1.0, 1.0] if
-        signed, [0.0, 1.0] if unsigned.
-
-        @method
-        @param {number} attributeIndex The attribute location to bind to.
-        @param {VertexBuffer} vertexBuffer The VertexBuffer to bind.
-        @return {VertexArray} The VertexArray object.
-    */
-    vertexNormalizedAttributeBuffer(attributeIndex, vertexBuffer) {
-        this.attributeBuffer(attributeIndex, vertexBuffer, false, false, true);
-
-        return this;
-    }
-
-    /**
-        Bind an per-instance normalized attribute buffer to this vertex array.
-        Integer data in the vertex buffer will be normalized to [-1.0, 1.0] if
-        signed, [0.0, 1.0] if unsigned.
-        
-        @method
-        @param {number} attributeIndex The attribute location to bind to.
-        @param {VertexBuffer} vertexBuffer The VertexBuffer to bind.
-        @return {VertexArray} The VertexArray object.
-    */
-    instanceNormalizedAttributeBuffer(attributeIndex, vertexBuffer) {
-        this.attributeBuffer(attributeIndex, vertexBuffer, true, false, true);
+    instanceAttributeBuffer(attributeIndex, vertexBuffer, options = DUMMY_OBJECT) {
+        this.attributeBuffer(attributeIndex, vertexBuffer, options, true);
 
         return this;
     }
@@ -174,7 +124,7 @@ class VertexArray {
         }
 
         this.bind();
-        this.gl.bindBuffer(this.gl.ELEMENT_ARRAY_BUFFER, vertexBuffer.buffer);
+        this.gl.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, vertexBuffer.buffer);
 
         this.numElements = vertexBuffer.numItems * 3;
         this.indexType = vertexBuffer.type;
@@ -203,13 +153,7 @@ class VertexArray {
         return this;
     }
 
-    /**
-        Bind this vertex array.
-
-        @method
-        @ignore
-        @return {VertexArray} The VertexArray object.
-    */
+    // Bind this vertex array.
     bind() {
         if (this.appState.vertexArray !== this) {
             this.gl.bindVertexArray(this.vertexArray);
@@ -219,40 +163,48 @@ class VertexArray {
         return this;
     }
 
-    /**
-        Attach an attribute buffer
-
-        @method
-        @ignore
-        @return {VertexArray} The VertexArray object.
-    */
-    attributeBuffer(attributeIndex, vertexBuffer, instanced, integer, normalized) {
+    // Generic attribute buffer attachment
+    attributeBuffer(attributeIndex, vertexBuffer, options = {}, instanced) {
         // allocate at gl level, if necessary
         if (this.vertexArray === null) {
             this.vertexArray = this.gl.createVertexArray();
         }
 
         this.bind();
-        this.gl.bindBuffer(this.gl.ARRAY_BUFFER, vertexBuffer.buffer);
+        this.gl.bindBuffer(GL.ARRAY_BUFFER, vertexBuffer.buffer);
+
+        let {
+            type = vertexBuffer.type,
+            size = vertexBuffer.itemSize,
+            stride = 0,
+            offset = 0,
+            normalized = false,
+            integer = Boolean(vertexBuffer.integer && !normalized)
+        } = options;
 
         let numColumns = vertexBuffer.numColumns;
+
+        if (stride === 0) {
+            // Set explicitly for matrix buffers
+            stride = numColumns * size * TYPE_SIZE[type];
+        }
 
         for (let i = 0; i < numColumns; ++i) {
             if (integer) {
                 this.gl.vertexAttribIPointer(
                     attributeIndex + i,
-                    vertexBuffer.itemSize,
-                    vertexBuffer.type,
-                    numColumns * vertexBuffer.itemSize * CONSTANTS.TYPE_SIZE[vertexBuffer.type],
-                    i * vertexBuffer.itemSize * CONSTANTS.TYPE_SIZE[vertexBuffer.type]);
+                    size,
+                    type,
+                    stride,
+                    offset + i * size * TYPE_SIZE[type]);
             } else {
                 this.gl.vertexAttribPointer(
                     attributeIndex + i,
-                    vertexBuffer.itemSize,
-                    vertexBuffer.type,
+                    size,
+                    type,
                     normalized,
-                    numColumns * vertexBuffer.itemSize * CONSTANTS.TYPE_SIZE[vertexBuffer.type],
-                    i * vertexBuffer.itemSize * CONSTANTS.TYPE_SIZE[vertexBuffer.type]);
+                    stride,
+                    offset + i * size * TYPE_SIZE[type]);
             }
 
             if (instanced) {
@@ -262,18 +214,16 @@ class VertexArray {
             this.gl.enableVertexAttribArray(attributeIndex + i);
         }
 
-        this.instanced = this.instanced || instanced;
-
-        if (instanced) {
-            this.numInstances = vertexBuffer.numItems;
-        } else {
-            this.numElements = this.numElements || vertexBuffer.numItems;
+        if (this.numDraws === 1) {
+            if (instanced) {
+                this.numInstances = vertexBuffer.numItems;
+            } else {
+                this.numElements = this.numElements || vertexBuffer.numItems;
+            }
         }
 
-        this.gl.bindBuffer(this.gl.ARRAY_BUFFER, null);
+        this.gl.bindBuffer(GL.ARRAY_BUFFER, null);
 
         return this;
     }
 }
-
-module.exports = VertexArray;

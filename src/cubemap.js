@@ -21,10 +21,16 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ///////////////////////////////////////////////////////////////////////////////////
 
-"use strict";
-
-const CONSTANTS = require("./constants");
-const TEXTURE_FORMAT_DEFAULTS = require("./texture-format-defaults");
+import { 
+    GL,
+    WEBGL_INFO,
+    TEXTURE_FORMATS,
+    COMPRESSED_TEXTURE_TYPES,
+    DUMMY_OBJECT,
+    DUMMY_UNIT_ARRAY,
+    // DEPRECATED
+    TEXTURE_FORMAT_DEFAULTS
+} from "./constants.js";
 
 /**
     Cubemap for environment mapping.
@@ -40,37 +46,67 @@ const TEXTURE_FORMAT_DEFAULTS = require("./texture-format-defaults");
     @prop {boolean} premultiplyAlpha Whether alpha should be pre-multiplied when loading this cubemap.
     @prop {Object} appState Tracked GL state.
 */
-class Cubemap {
+export class Cubemap {
 
     constructor(gl, appState, options) {
-        let defaultType = options.format === CONSTANTS.DEPTH_COMPONENT ? CONSTANTS.UNSIGNED_SHORT : CONSTANTS.UNSIGNED_BYTE;
 
         this.gl = gl;
         this.texture = null;
-        this.format = options.format !== undefined ? options.format : CONSTANTS.RGBA;
-        this.type = options.type !== undefined ? options.type : defaultType;
-        this.internalFormat = options.internalFormat !== undefined ? options.internalFormat : TEXTURE_FORMAT_DEFAULTS[this.type][this.format];
         this.appState = appState;
+
+        this.compressed = COMPRESSED_TEXTURE_TYPES[options.internalFormat];
+        
+        if (options.format !== undefined) {
+            console.warn("Cubemap option 'format' is deprecated and will be removed. Use 'internalFormat' with a sized format instead.");
+            this.compressed = Boolean(COMPRESSED_TEXTURE_TYPES[options.format]);
+            if (options.type === undefined) {
+                options.type = options.format === GL.DEPTH_COMPONENT ? GL.UNSIGNED_SHORT : GL.UNSIGNED_BYTE;
+            }
+            if (options.internalFormat === undefined) {
+                if (this.compressed) {
+                    options.internalFormat = options.format;
+                } else {
+                    options.internalFormat = TEXTURE_FORMAT_DEFAULTS[options.type][options.format];
+                }
+            }
+        }
+
+        if (this.compressed) {
+            // For compressed textures, just need to provide one of format, internalFormat.
+            // The other will be the same.
+            this.internalFormat = options.internalFormat;
+            this.format = options.internalFormat;
+            this.type = GL.UNSIGNED_BYTE;
+        } else {
+            this.internalFormat = options.internalFormat !== undefined ? options.internalFormat : GL.RGBA8;
+
+            let formatInfo = TEXTURE_FORMATS[this.internalFormat];
+            this.format = formatInfo[0];
+            this.type = options.type !== undefined ? options.type : formatInfo[1];
+        }
         
         // -1 indicates unbound
         this.currentUnit = -1;
 
-        let negX = options.negX;
+        let arrayData = Array.isArray(options.negX);
+        let negX = arrayData ? options.negX[0] : options.negX;
+
         let {
             width = negX.width,
             height = negX.height,
             flipY = false,
             premultiplyAlpha = false,
-            minFilter = negX ? CONSTANTS.LINEAR_MIPMAP_NEAREST : CONSTANTS.NEAREST,
-            magFilter = negX ? CONSTANTS.LINEAR : CONSTANTS.NEAREST,
-            wrapS = CONSTANTS.REPEAT,
-            wrapT = CONSTANTS.REPEAT,
-            compareMode = CONSTANTS.NONE,
-            compareFunc = CONSTANTS.LEQUAL,
+            minFilter = negX ? GL.LINEAR_MIPMAP_NEAREST : GL.NEAREST,
+            magFilter = negX ? GL.LINEAR : GL.NEAREST,
+            wrapS = GL.REPEAT,
+            wrapT = GL.REPEAT,
+            compareMode = GL.NONE,
+            compareFunc = GL.LEQUAL,
             minLOD = null,
             maxLOD = null,
             baseLevel = null,
-            maxLevel = null
+            maxLevel = null,
+            maxAnisotropy = 1
         } = options;
         
         this.width = width;
@@ -87,7 +123,9 @@ class Cubemap {
         this.maxLOD = maxLOD;
         this.baseLevel = baseLevel;
         this.maxLevel = maxLevel;
-        this.mipmaps = (minFilter === CONSTANTS.LINEAR_MIPMAP_NEAREST || minFilter === CONSTANTS.LINEAR_MIPMAP_LINEAR);
+        this.maxAnisotropy = Math.min(maxAnisotropy, WEBGL_INFO.MAX_TEXTURE_ANISOTROPY);
+        this.mipmaps = (minFilter === GL.LINEAR_MIPMAP_NEAREST || minFilter === GL.LINEAR_MIPMAP_LINEAR);
+        this.miplevelsProvided = arrayData && options.negX.length > 1;
         this.levels = this.mipmaps ? Math.floor(Math.log2(Math.min(this.width, this.height))) + 1 : 1;
 
         this.restore(options);
@@ -112,7 +150,7 @@ class Cubemap {
                 Can be any format that would be accepted by texImage2D.
         @return {Cubemap} The Cubemap object.
     */
-    restore(options = CONSTANTS.DUMMY_OBJECT) {
+    restore(options = DUMMY_OBJECT) {
         this.texture = this.gl.createTexture();
 
         if (this.currentUnit !== -1) {
@@ -120,42 +158,50 @@ class Cubemap {
         }
 
         this.bind(0);
-        this.gl.pixelStorei(CONSTANTS.UNPACK_FLIP_Y_WEBGL, this.flipY);
-        this.gl.pixelStorei(CONSTANTS.UNPACK_PREMULTIPLY_ALPHA_WEBGL, this.premultiplyAlpha);
-        this.gl.texParameteri(CONSTANTS.TEXTURE_CUBE_MAP, CONSTANTS.TEXTURE_MAG_FILTER, this.magFilter);
-        this.gl.texParameteri(CONSTANTS.TEXTURE_CUBE_MAP, CONSTANTS.TEXTURE_MIN_FILTER, this.minFilter);
-        this.gl.texParameteri(CONSTANTS.TEXTURE_CUBE_MAP, CONSTANTS.TEXTURE_WRAP_S, this.wrapS);
-        this.gl.texParameteri(CONSTANTS.TEXTURE_CUBE_MAP, CONSTANTS.TEXTURE_WRAP_T, this.wrapT);
-        this.gl.texParameteri(CONSTANTS.TEXTURE_CUBE_MAP, CONSTANTS.TEXTURE_COMPARE_FUNC, this.compareFunc);
-        this.gl.texParameteri(CONSTANTS.TEXTURE_CUBE_MAP, CONSTANTS.TEXTURE_COMPARE_MODE, this.compareMode);
+        this.gl.pixelStorei(GL.UNPACK_FLIP_Y_WEBGL, this.flipY);
+        this.gl.pixelStorei(GL.UNPACK_PREMULTIPLY_ALPHA_WEBGL, this.premultiplyAlpha);
+        this.gl.texParameteri(GL.TEXTURE_CUBE_MAP, GL.TEXTURE_MAG_FILTER, this.magFilter);
+        this.gl.texParameteri(GL.TEXTURE_CUBE_MAP, GL.TEXTURE_MIN_FILTER, this.minFilter);
+        this.gl.texParameteri(GL.TEXTURE_CUBE_MAP, GL.TEXTURE_WRAP_S, this.wrapS);
+        this.gl.texParameteri(GL.TEXTURE_CUBE_MAP, GL.TEXTURE_WRAP_T, this.wrapT);
+        this.gl.texParameteri(GL.TEXTURE_CUBE_MAP, GL.TEXTURE_COMPARE_FUNC, this.compareFunc);
+        this.gl.texParameteri(GL.TEXTURE_CUBE_MAP, GL.TEXTURE_COMPARE_MODE, this.compareMode);
+        
         if (this.baseLevel !== null) {
-            this.gl.texParameteri(CONSTANTS.TEXTURE_CUBE_MAP, CONSTANTS.TEXTURE_BASE_LEVEL, this.baseLevel);
+            this.gl.texParameteri(GL.TEXTURE_CUBE_MAP, GL.TEXTURE_BASE_LEVEL, this.baseLevel);
         }
+        
         if (this.maxLevel !== null) {
-            this.gl.texParameteri(CONSTANTS.TEXTURE_CUBE_MAP, CONSTANTS.TEXTURE_MAX_LEVEL, this.maxLevel);
+            this.gl.texParameteri(GL.TEXTURE_CUBE_MAP, GL.TEXTURE_MAX_LEVEL, this.maxLevel);
         }
+        
         if (this.minLOD !== null) {
-            this.gl.texParameteri(CONSTANTS.TEXTURE_CUBE_MAP, CONSTANTS.TEXTURE_MIN_LOD, this.minLOD);
+            this.gl.texParameteri(GL.TEXTURE_CUBE_MAP, GL.TEXTURE_MIN_LOD, this.minLOD);
         }
+        
         if (this.maxLOD !== null) {
-            this.gl.texParameteri(CONSTANTS.TEXTURE_CUBE_MAP, CONSTANTS.TEXTURE_MAX_LOD, this.maxLOD);
+            this.gl.texParameteri(GL.TEXTURE_CUBE_MAP, GL.TEXTURE_MAX_LOD, this.maxLOD);
         }
 
-        this.gl.texStorage2D(CONSTANTS.TEXTURE_CUBE_MAP, this.levels, this.internalFormat, this.width, this.height);
+        if (this.maxAnisotropy > 1) {
+            this.gl.texParameteri(GL.TEXTURE_CUBE_MAP, GL.TEXTURE_MAX_ANISOTROPY_EXT, this.maxAnisotropy);
+        }
+
+        this.gl.texStorage2D(GL.TEXTURE_CUBE_MAP, this.levels, this.internalFormat, this.width, this.height);
 
         let { negX, posX, negY, posY, negZ, posZ } = options;
 
         if (negX) {
-            this.gl.texSubImage2D(CONSTANTS.TEXTURE_CUBE_MAP_NEGATIVE_X, 0, 0, 0, this.width, this.height, this.format, this.type, negX);
-            this.gl.texSubImage2D(CONSTANTS.TEXTURE_CUBE_MAP_POSITIVE_X, 0, 0, 0, this.width, this.height, this.format, this.type, posX);
-            this.gl.texSubImage2D(CONSTANTS.TEXTURE_CUBE_MAP_NEGATIVE_Y, 0, 0, 0, this.width, this.height, this.format, this.type, negY);
-            this.gl.texSubImage2D(CONSTANTS.TEXTURE_CUBE_MAP_POSITIVE_Y, 0, 0, 0, this.width, this.height, this.format, this.type, posY);
-            this.gl.texSubImage2D(CONSTANTS.TEXTURE_CUBE_MAP_NEGATIVE_Z, 0, 0, 0, this.width, this.height, this.format, this.type, negZ);
-            this.gl.texSubImage2D(CONSTANTS.TEXTURE_CUBE_MAP_POSITIVE_Z, 0, 0, 0, this.width, this.height, this.format, this.type, posZ);
+            this.faceData(GL.TEXTURE_CUBE_MAP_NEGATIVE_X, negX);
+            this.faceData(GL.TEXTURE_CUBE_MAP_POSITIVE_X, posX);
+            this.faceData(GL.TEXTURE_CUBE_MAP_NEGATIVE_Y, negY);
+            this.faceData(GL.TEXTURE_CUBE_MAP_POSITIVE_Y, posY);
+            this.faceData(GL.TEXTURE_CUBE_MAP_NEGATIVE_Z, negZ);
+            this.faceData(GL.TEXTURE_CUBE_MAP_POSITIVE_Z, posZ);
         }
 
-        if (this.mipmaps) {
-            this.gl.generateMipmap(CONSTANTS.TEXTURE_CUBE_MAP);
+        if (this.mipmaps && !this.miplevelsProvided) {
+            this.gl.generateMipmap(GL.TEXTURE_CUBE_MAP);
         }
 
         return this;
@@ -178,13 +224,36 @@ class Cubemap {
         return this;
     }
 
-    /**
-        Bind this cubemap to a texture unit.
+    // Input data for one cubemap face.
+    faceData(face, data) {
+        if (!Array.isArray(data)) {
+            DUMMY_UNIT_ARRAY[0] = data;
+            data = DUMMY_UNIT_ARRAY;
+        }
 
-        @method
-        @ignore
-        @return {Cubemap} The Cubemap object.
-    */
+        let numLevels = this.mipmaps ? data.length : 1;
+        let width = this.width;
+        let height = this.height;
+        let i;
+
+        if (this.compressed) {
+            for (i = 0; i < numLevels; ++i) {
+                this.gl.compressedTexSubImage2D(face, i, 0, 0, width, height, this.format, data[i]);
+                width = Math.max(width >> 1, 1);
+                height = Math.max(height >> 1, 1);
+            }
+        } else {
+            for (i = 0; i < numLevels; ++i) {
+                this.gl.texSubImage2D(face, i, 0, 0, width, height, this.format, this.type, data[i]);
+                width = Math.max(width >> 1, 1);
+                height = Math.max(height >> 1, 1);
+            }
+        }
+
+        return this;
+    }
+
+    // Bind this cubemap to a texture unit.
     bind(unit) {
         let currentTexture = this.appState.textures[unit];
         
@@ -197,8 +266,8 @@ class Cubemap {
                 this.appState.textures[this.currentUnit] = null;
             }
 
-            this.gl.activeTexture(CONSTANTS.TEXTURE0 + unit);
-            this.gl.bindTexture(CONSTANTS.TEXTURE_CUBE_MAP, this.texture);
+            this.gl.activeTexture(GL.TEXTURE0 + unit);
+            this.gl.bindTexture(GL.TEXTURE_CUBE_MAP, this.texture);
 
             this.appState.textures[unit] = this;
             this.currentUnit = unit;
@@ -208,5 +277,3 @@ class Cubemap {
     }
 
 }
-
-module.exports = Cubemap;

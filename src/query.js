@@ -21,7 +21,7 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ///////////////////////////////////////////////////////////////////////////////////
 
-"use strict";
+import { GL } from "./constants.js";
 
 /**
     Generic query object.
@@ -33,7 +33,7 @@
     @prop {boolean} active Whether or not a query is currently in progress.
     @prop {Any} result The result of the query (only available after a call to ready() returns true). 
 */
-class Query {
+export class Query {
 
     constructor(gl, target) {
         this.gl = gl;
@@ -96,11 +96,11 @@ class Query {
         @return {boolean} If results are available.
     */
     ready() {
-        if (this.active && this.gl.getQueryParameter(this.query, this.gl.QUERY_RESULT_AVAILABLE)) {
+        if (this.active && this.gl.getQueryParameter(this.query, GL.QUERY_RESULT_AVAILABLE)) {
             this.active = false;
             // Note(Tarek): Casting because FF incorrectly returns booleans.
             // https://bugzilla.mozilla.org/show_bug.cgi?id=1422714 
-            this.result = Number(this.gl.getQueryParameter(this.query, this.gl.QUERY_RESULT));
+            this.result = Number(this.gl.getQueryParameter(this.query, GL.QUERY_RESULT));
             return true;
         }
 
@@ -123,5 +123,3 @@ class Query {
     }
 
 }
-
-module.exports = Query;

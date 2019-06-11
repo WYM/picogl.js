@@ -183,167 +183,6 @@
 
         <tr>
             
-                <td class="name"><code>floatRenderTargetsEnabled</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Whether the EXT_color_buffer_float extension is enabled.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>linearFloatTexturesEnabled</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Whether the OES_texture_float_linear extension is enabled.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>s3tcTexturesEnabled</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Whether the WEBGL_compressed_texture_s3tc extension is enabled.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>s3tcSRGBTexturesEnabled</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Whether the WEBGL_compressed_texture_s3tc_srgb extension is enabled.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>etcTexturesEnabled</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Whether the WEBGL_compressed_texture_etc extension is enabled.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>astcTexturesEnabled</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Whether the WEBGL_compressed_texture_astc extension is enabled.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>pvrtcTexturesEnabled</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Whether the WEBGL_compressed_texture_pvrtc extension is enabled.</td>
-        </tr>
-
-    
-
-        <tr>
-            
                 <td class="name"><code>state</code></td>
             
 
@@ -422,7 +261,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line61">line 61</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line51">line 51</a>
     </li></ul></dd>
     
 
@@ -469,146 +308,6 @@
 
     
         <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="astcTextures"><span class="type-signature"></span>astcTextures<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="App.html">App</a>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Enable the WEBGL_compressed_texture_astc extension, which allows the following enums to
-        be used as texture formats:
-        
-        <ul>
-          <li>PicoGL.COMPRESSED_RGBA_ASTC_4x4_KHR
-          <li>PicoGL.COMPRESSED_RGBA_ASTC_5x4_KHR
-          <li>PicoGL.COMPRESSED_RGBA_ASTC_5x5_KHR
-          <li>PicoGL.COMPRESSED_RGBA_ASTC_6x5_KHR
-          <li>PicoGL.COMPRESSED_RGBA_ASTC_6x6_KHR
-          <li>PicoGL.COMPRESSED_RGBA_ASTC_8x5_KHR
-          <li>PicoGL.COMPRESSED_RGBA_ASTC_8x6_KHR
-          <li>PicoGL.COMPRESSED_RGBA_ASTC_8x8_KHR
-          <li>PicoGL.COMPRESSED_RGBA_ASTC_10x5_KHR
-          <li>PicoGL.COMPRESSED_RGBA_ASTC_10x6_KHR
-          <li>PicoGL.COMPRESSED_RGBA_ASTC_10x8_KHR
-          <li>PicoGL.COMPRESSED_RGBA_ASTC_10x10_KHR
-          <li>PicoGL.COMPRESSED_RGBA_ASTC_12x10_KHR
-          <li>PicoGL.COMPRESSED_RGBA_ASTC_12x12_KHR
-          <li>PicoGL.COMPRESSED_SRGB8_ALPHA8_ASTC_4x4_KHR
-          <li>PicoGL.COMPRESSED_SRGB8_ALPHA8_ASTC_5x4_KHR
-          <li>PicoGL.COMPRESSED_SRGB8_ALPHA8_ASTC_5x5_KHR
-          <li>PicoGL.COMPRESSED_SRGB8_ALPHA8_ASTC_6x5_KHR
-          <li>PicoGL.COMPRESSED_SRGB8_ALPHA8_ASTC_6x6_KHR
-          <li>PicoGL.COMPRESSED_SRGB8_ALPHA8_ASTC_8x5_KHR
-          <li>PicoGL.COMPRESSED_SRGB8_ALPHA8_ASTC_8x6_KHR
-          <li>PicoGL.COMPRESSED_SRGB8_ALPHA8_ASTC_8x8_KHR
-          <li>PicoGL.COMPRESSED_SRGB8_ALPHA8_ASTC_10x5_KHR
-          <li>PicoGL.COMPRESSED_SRGB8_ALPHA8_ASTC_10x6_KHR
-          <li>PicoGL.COMPRESSED_SRGB8_ALPHA8_ASTC_10x8_KHR
-          <li>PicoGL.COMPRESSED_SRGB8_ALPHA8_ASTC_10x10_KHR
-          <li>PicoGL.COMPRESSED_SRGB8_ALPHA8_ASTC_12x10_KHR
-          <li>PicoGL.COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR
-        </ul>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line812">line 812</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    The App object.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="App.html">App</a></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
 
         
             
@@ -668,7 +367,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line391">line 391</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line374">line 374</a>
     </li></ul></dd>
     
 
@@ -848,7 +547,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line417">line 417</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line400">line 400</a>
     </li></ul></dd>
     
 
@@ -1075,7 +774,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line434">line 434</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line417">line 417</a>
     </li></ul></dd>
     
 
@@ -1656,7 +1355,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line296">line 296</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line279">line 279</a>
     </li></ul></dd>
     
 
@@ -1764,7 +1463,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line214">line 214</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line197">line 197</a>
     </li></ul></dd>
     
 
@@ -1990,7 +1689,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line188">line 188</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line171">line 171</a>
     </li></ul></dd>
     
 
@@ -2148,7 +1847,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line202">line 202</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line185">line 185</a>
     </li></ul></dd>
     
 
@@ -2375,7 +2074,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line172">line 172</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line155">line 155</a>
     </li></ul></dd>
     
 
@@ -2841,6 +2540,45 @@
 
         <tr>
             
+                <td class="name"><code>internalFormat</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">GLEnum</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    RGBA8
+                
+                </td>
+            
+
+            <td class="description last">Texture data internal format. Must be a sized format.</td>
+        </tr>
+
+    
+
+        <tr>
+            
                 <td class="name"><code>type</code></td>
             
 
@@ -2871,86 +2609,8 @@
                 </td>
             
 
-            <td class="description last">Type of data stored in the texture. Defaults to UNSIGNED_SHORT 
-            if format is DEPTH_COMPONENT, UNSIGNED_BYTE otherwise.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>format</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">GLEnum</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    RGBA
-                
-                </td>
-            
-
-            <td class="description last">Texture data format.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>internalFormat</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">GLEnum</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    RGBA
-                
-                </td>
-            
-
-            <td class="description last">Texture data internal format.</td>
+            <td class="description last">Type of data stored in the texture. Default based on 
+            <b>internalFormat</b>.</td>
         </tr>
 
     
@@ -3065,7 +2725,7 @@
                 </td>
             
 
-            <td class="description last">Minification filter. Defaults to 
+            <td class="description last">Minification filter. Defaults to
             LINEAR_MIPMAP_NEAREST if image data is provided, NEAREST otherwise.</td>
         </tr>
 
@@ -3415,13 +3075,13 @@
 
         <tr>
             
-                <td class="name"><code>generateMipmaps</code></td>
+                <td class="name"><code>maxAnisotropy</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">boolean</span>
+<span class="param-type">GLEnum</span>
 
 
             
@@ -3445,8 +3105,7 @@
                 </td>
             
 
-            <td class="description last">Should mipmaps be generated. Defaults to generating mipmaps if
-            a mipmap sampling filter is usedd.</td>
+            <td class="description last">Maximum anisotropy in filtering.</td>
         </tr>
 
     
@@ -3494,7 +3153,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1246">line 1246</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1132">line 1132</a>
     </li></ul></dd>
     
 
@@ -3550,7 +3209,7 @@
     
 
     
-    <h4 class="name" id="createDrawCall"><span class="type-signature"></span>createDrawCall<span class="signature">(program, vertexArray, primitive<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="DrawCall.html">DrawCall</a>}</span></h4>
+    <h4 class="name" id="createDrawCall"><span class="type-signature"></span>createDrawCall<span class="signature">(program, vertexArray<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="DrawCall.html">DrawCall</a>}</span></h4>
     
 
     
@@ -3650,41 +3309,6 @@
             
                 <td class="attributes">
                 
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last">Vertex data to use for drawing.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>primitive</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">GLEnum</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
                     &lt;optional><br>
                 
 
@@ -3697,12 +3321,12 @@
             
                 <td class="default">
                 
-                    TRIANGLES
+                    null
                 
                 </td>
             
 
-            <td class="description last">Type of primitive to draw.</td>
+            <td class="description last">Vertex data to use for drawing.</td>
         </tr>
 
     
@@ -3743,7 +3367,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1306">line 1306</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1191">line 1191</a>
     </li></ul></dd>
     
 
@@ -3851,7 +3475,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1270">line 1270</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1156">line 1156</a>
     </li></ul></dd>
     
 
@@ -4133,7 +3757,259 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1042">line 1042</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line936">line 936</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    New VertexBuffer object.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="VertexBuffer.html">VertexBuffer</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="createInterleavedBuffer"><span class="type-signature"></span>createInterleavedBuffer<span class="signature">(bytesPerVertex, data, usage<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="VertexBuffer.html">VertexBuffer</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Create an buffer without any structure information. Structure
+        must be fully specified when binding to a VertexArray.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>bytesPerVertex</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">Number of bytes per vertex.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ArrayBufferView</span>
+|
+
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">Buffer data itself or the total
+            number of bytes to be allocated.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>usage</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">GLEnum</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    STATIC_DRAW
+                
+                </td>
+            
+
+            <td class="description last">Buffer usage.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line922">line 922</a>
     </li></ul></dd>
     
 
@@ -4383,7 +4259,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1028">line 1028</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line907">line 907</a>
     </li></ul></dd>
     
 
@@ -4447,7 +4323,8 @@
 
 
 <div class="description">
-    Create a program.
+    Create a program synchronously. It is highly recommended to use <b>createPrograms</b> instead as
+            that method will compile shaders in parallel where possible.
 </div>
 
 
@@ -4620,7 +4497,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line964">line 964</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line731">line 731</a>
     </li></ul></dd>
     
 
@@ -4659,6 +4536,182 @@
     <dd>
         
 <span class="param-type"><a href="Program.html">Program</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="createPrograms"><span class="type-signature"></span>createPrograms<span class="signature">(&hellip;sources)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Create several programs. Preferred method for program creation as it will compile shaders
+        in parallel where possible.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>sources</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                    &lt;repeatable><br>
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Variable number of 2 or 3 element arrays, each containing:
+            <ul>
+                <li> (Shader|string) Vertex shader object or source code.
+                <li> (Shader|string) Fragment shader object or source code.
+                <li> (Array - optional) Array of names of transform feedback varyings.
+            </ul></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line751">line 751</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Promise that will resolve to an array of Programs when compilation and
+            linking are complete for all programs.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
 
 
     </dd>
@@ -4777,7 +4830,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1281">line 1281</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1167">line 1167</a>
     </li></ul></dd>
     
 
@@ -5059,7 +5112,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1260">line 1260</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1146">line 1146</a>
     </li></ul></dd>
     
 
@@ -5240,7 +5293,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line977">line 977</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line856">line 856</a>
     </li></ul></dd>
     
 
@@ -5379,7 +5432,7 @@
 
             
 
-            <td class="description last">Image data. An array can be passed to manually set all levels 
+            <td class="description last">Image data. An array can be passed to manually set all levels
             of the mipmap chain. If a single level is passed and mipmap filtering is being used,
             generateMipmap() will be called to produce the remaining levels.</td>
         </tr>
@@ -5510,6 +5563,45 @@
 
         <tr>
             
+                <td class="name"><code>internalFormat</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">GLEnum</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    RGBA8
+                
+                </td>
+            
+
+            <td class="description last">Texture data internal format. Must be a sized format.</td>
+        </tr>
+
+    
+
+        <tr>
+            
                 <td class="name"><code>type</code></td>
             
 
@@ -5540,86 +5632,8 @@
                 </td>
             
 
-            <td class="description last">Type of data stored in the texture. Defaults to UNSIGNED_SHORT 
-            if format is DEPTH_COMPONENT, UNSIGNED_BYTE otherwise.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>format</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">GLEnum</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    RGBA
-                
-                </td>
-            
-
-            <td class="description last">Texture data format.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>internalFormat</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">GLEnum</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    RGBA
-                
-                </td>
-            
-
-            <td class="description last">Texture data internal format.</td>
+            <td class="description last">Type of data stored in the texture. Default based on 
+            <b>internalFormat</b>.</td>
         </tr>
 
     
@@ -5734,7 +5748,7 @@
                 </td>
             
 
-            <td class="description last">Minification filter. Defaults to 
+            <td class="description last">Minification filter. Defaults to
             LINEAR_MIPMAP_NEAREST if image data is provided, NEAREST otherwise.</td>
         </tr>
 
@@ -6084,13 +6098,13 @@
 
         <tr>
             
-                <td class="name"><code>generateMipmaps</code></td>
+                <td class="name"><code>maxAnisotropy</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">boolean</span>
+<span class="param-type">GLEnum</span>
 
 
             
@@ -6114,8 +6128,7 @@
                 </td>
             
 
-            <td class="description last">Should mipmaps be generated. Defaults to generating mipmaps if
-            a mipmap sampling filter is used and the mipmap levels aren't provided directly.</td>
+            <td class="description last">Maximum anisotropy in filtering.</td>
         </tr>
 
     
@@ -6163,7 +6176,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1098">line 1098</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line990">line 990</a>
     </li></ul></dd>
     
 
@@ -6292,7 +6305,7 @@
 
             
 
-            <td class="description last">Pixel data. An array can be passed to manually set all levels 
+            <td class="description last">Pixel data. An array can be passed to manually set all levels
             of the mipmap chain. If a single level is passed and mipmap filtering is being used,
             generateMipmap() will be called to produce the remaining levels.</td>
         </tr>
@@ -6450,6 +6463,45 @@
 
         <tr>
             
+                <td class="name"><code>internalFormat</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">GLEnum</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    RGBA8
+                
+                </td>
+            
+
+            <td class="description last">Texture data internal format. Must be a sized format.</td>
+        </tr>
+
+    
+
+        <tr>
+            
                 <td class="name"><code>type</code></td>
             
 
@@ -6480,86 +6532,8 @@
                 </td>
             
 
-            <td class="description last">Type of data stored in the texture. Defaults to UNSIGNED_SHORT 
-            if format is DEPTH_COMPONENT, UNSIGNED_BYTE otherwise.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>format</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">GLEnum</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    RGBA
-                
-                </td>
-            
-
-            <td class="description last">Texture data format.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>internalFormat</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">GLEnum</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    RGBA
-                
-                </td>
-            
-
-            <td class="description last">Texture data internal format.</td>
+            <td class="description last">Type of data stored in the texture. Default based on 
+            <b>internalFormat</b>.</td>
         </tr>
 
     
@@ -6635,7 +6609,7 @@
                 </td>
             
 
-            <td class="description last">Minification filter. Defaults to 
+            <td class="description last">Minification filter. Defaults to
             LINEAR_MIPMAP_NEAREST if image data is provided, NEAREST otherwise.</td>
         </tr>
 
@@ -7024,13 +6998,13 @@
 
         <tr>
             
-                <td class="name"><code>generateMipmaps</code></td>
+                <td class="name"><code>maxAnisotropy</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">boolean</span>
+<span class="param-type">GLEnum</span>
 
 
             
@@ -7054,8 +7028,7 @@
                 </td>
             
 
-            <td class="description last">Should mipmaps be generated. Defaults to generating mipmaps if
-            a mipmap sampling filter is use and the mipmap levels aren't provided directly.</td>
+            <td class="description last">Maximum anisotropy in filtering.</td>
         </tr>
 
     
@@ -7103,7 +7076,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1193">line 1193</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1081">line 1081</a>
     </li></ul></dd>
     
 
@@ -7232,7 +7205,7 @@
 
             
 
-            <td class="description last">Pixel data. An array can be passed to manually set all levels 
+            <td class="description last">Pixel data. An array can be passed to manually set all levels
             of the mipmap chain. If a single level is passed and mipmap filtering is being used,
             generateMipmap() will be called to produce the remaining levels.</td>
         </tr>
@@ -7390,6 +7363,45 @@
 
         <tr>
             
+                <td class="name"><code>internalFormat</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">GLEnum</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    RGBA8
+                
+                </td>
+            
+
+            <td class="description last">Texture data internal format. Must be a sized format.</td>
+        </tr>
+
+    
+
+        <tr>
+            
                 <td class="name"><code>type</code></td>
             
 
@@ -7420,86 +7432,8 @@
                 </td>
             
 
-            <td class="description last">Type of data stored in the texture. Defaults to UNSIGNED_SHORT 
-            if format is DEPTH_COMPONENT, UNSIGNED_BYTE otherwise.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>format</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">GLEnum</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    RGBA
-                
-                </td>
-            
-
-            <td class="description last">Texture data format.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>internalFormat</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">GLEnum</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    RGBA
-                
-                </td>
-            
-
-            <td class="description last">Texture data internal format.</td>
+            <td class="description last">Type of data stored in the texture. Default based on 
+            <b>internalFormat</b>.</td>
         </tr>
 
     
@@ -7575,7 +7509,7 @@
                 </td>
             
 
-            <td class="description last">Minification filter. Defaults to 
+            <td class="description last">Minification filter. Defaults to
             LINEAR_MIPMAP_NEAREST if image data is provided, NEAREST otherwise.</td>
         </tr>
 
@@ -7964,13 +7898,13 @@
 
         <tr>
             
-                <td class="name"><code>generateMipmaps</code></td>
+                <td class="name"><code>maxAnisotropy</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">boolean</span>
+<span class="param-type">GLEnum</span>
 
 
             
@@ -7994,8 +7928,7 @@
                 </td>
             
 
-            <td class="description last">Should mipmaps be generated. Defaults to generating mipmaps if
-            a mipmap sampling filter is use and the mipmap levels aren't provided directly.</td>
+            <td class="description last">Maximum anisotropy in filtering.</td>
         </tr>
 
     
@@ -8043,7 +7976,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1148">line 1148</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1038">line 1038</a>
     </li></ul></dd>
     
 
@@ -8151,7 +8084,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1291">line 1291</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1177">line 1177</a>
     </li></ul></dd>
     
 
@@ -8259,7 +8192,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line997">line 997</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line876">line 876</a>
     </li></ul></dd>
     
 
@@ -8474,7 +8407,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1057">line 1057</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line951">line 951</a>
     </li></ul></dd>
     
 
@@ -8582,7 +8515,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line987">line 987</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line866">line 866</a>
     </li></ul></dd>
     
 
@@ -8787,7 +8720,7 @@
                 </td>
             
 
-            <td class="description last">Buffer data itself or the total 
+            <td class="description last">Buffer data itself or the total
             number of elements to be allocated.</td>
         </tr>
 
@@ -8868,7 +8801,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line1012">line 1012</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line891">line 891</a>
     </li></ul></dd>
     
 
@@ -8976,7 +8909,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line643">line 643</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line626">line 626</a>
     </li></ul></dd>
     
 
@@ -9085,7 +9018,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line255">line 255</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line238">line 238</a>
     </li></ul></dd>
     
 
@@ -9193,7 +9126,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line270">line 270</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line253">line 253</a>
     </li></ul></dd>
     
 
@@ -9301,7 +9234,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line931">line 931</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line697">line 697</a>
     </li></ul></dd>
     
 
@@ -9458,7 +9391,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line379">line 379</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line362">line 362</a>
     </li></ul></dd>
     
 
@@ -9615,7 +9548,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line366">line 366</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line349">line 349</a>
     </li></ul></dd>
     
 
@@ -9795,7 +9728,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line329">line 329</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line312">line 312</a>
     </li></ul></dd>
     
 
@@ -9903,7 +9836,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line341">line 341</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line324">line 324</a>
     </li></ul></dd>
     
 
@@ -10011,7 +9944,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line655">line 655</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line638">line 638</a>
     </li></ul></dd>
     
 
@@ -10168,363 +10101,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line228">line 228</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li><a href="Framebuffer.html">Framebuffer</a></li>
-        </ul>
-    </dd>
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    The App object.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="App.html">App</a></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="etcTextures"><span class="type-signature"></span>etcTextures<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="App.html">App</a>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Enable the WEBGL_compressed_texture_etc extension, which allows the following enums to
-        be used as texture formats:
-        
-        <ul>
-          <li>PicoGL.COMPRESSED_R11_EAC
-          <li>PicoGL.COMPRESSED_SIGNED_R11_EAC
-          <li>PicoGL.COMPRESSED_RG11_EAC
-          <li>PicoGL.COMPRESSED_SIGNED_RG11_EAC
-          <li>PicoGL.COMPRESSED_RGB8_ETC2
-          <li>PicoGL.COMPRESSED_SRGB8_ETC2
-          <li>PicoGL.COMPRESSED_RGB8_PUNCHTHROUGH_ALPHA1_ETC2
-          <li>PicoGL.COMPRESSED_SRGB8_PUNCHTHROUGH_ALPHA1_ETC2
-          <li>PicoGL.COMPRESSED_RGBA8_ETC2_EAC
-          <li>PicoGL.COMPRESSED_SRGB8_ALPHA8_ETC2_EAC
-        </ul>
-
-        Note that while WEBGL_compressed_texture_etc1 is not enabled by this method,
-        ETC1 textures can be loaded using COMPRESSED_RGB8_ETC2 as the format.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line754">line 754</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    The App object.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="App.html">App</a></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="floatRenderTargets"><span class="type-signature"></span>floatRenderTargets<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="App.html">App</a>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Enable the EXT_color_buffer_float extension. Allows for creating float textures as
-        render targets on FrameBuffer objects.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line669">line 669</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li><a href="Framebuffer.html">Framebuffer</a></li>
-        </ul>
-    </dd>
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    The App object.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="App.html">App</a></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="linearFloatTextures"><span class="type-signature"></span>linearFloatTextures<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="App.html">App</a>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Enable the OES_texture_float_linear extension. Allows for linear blending on float textures.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line682">line 682</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line211">line 211</a>
     </li></ul></dd>
     
 
@@ -10639,7 +10216,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line113">line 113</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line109">line 109</a>
     </li></ul></dd>
     
 
@@ -10747,7 +10324,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line403">line 403</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line386">line 386</a>
     </li></ul></dd>
     
 
@@ -10855,7 +10432,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line353">line 353</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line336">line 336</a>
     </li></ul></dd>
     
 
@@ -10963,7 +10540,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line631">line 631</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line614">line 614</a>
     </li></ul></dd>
     
 
@@ -11071,7 +10648,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line485">line 485</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line468">line 468</a>
     </li></ul></dd>
     
 
@@ -11179,7 +10756,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line460">line 460</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line443">line 443</a>
     </li></ul></dd>
     
 
@@ -11336,123 +10913,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line146">line 146</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    The App object.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="App.html">App</a></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="pvrtcTextures"><span class="type-signature"></span>pvrtcTextures<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="App.html">App</a>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Enable the WEBGL_compressed_texture_pvrtc extension, which allows the following enums to
-        be used as texture formats:
-
-        <ul>
-          <li>PicoGL.COMPRESSED_RGB_PVRTC_4BPPV1_IMG
-          <li>PicoGL.COMPRESSED_RGB_PVRTC_2BPPV1_IMG
-          <li>PicoGL.COMPRESSED_RGBA_PVRTC_4BPPV1_IMG
-          <li>PicoGL.COMPRESSED_RGBA_PVRTC_2BPPV1_IMG
-        </ul>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line864">line 864</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line138">line 138</a>
     </li></ul></dd>
     
 
@@ -11560,7 +11021,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line619">line 619</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line602">line 602</a>
     </li></ul></dd>
     
 
@@ -11717,7 +11178,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line242">line 242</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line225">line 225</a>
     </li></ul></dd>
     
 
@@ -12094,7 +11555,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line890">line 890</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line656">line 656</a>
     </li></ul></dd>
     
 
@@ -12274,7 +11735,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line945">line 945</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line711">line 711</a>
     </li></ul></dd>
     
 
@@ -12382,7 +11843,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line131">line 131</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line123">line 123</a>
     </li></ul></dd>
     
 
@@ -12438,7 +11899,7 @@
     
 
     
-    <h4 class="name" id="s3tcTextures"><span class="type-signature"></span>s3tcTextures<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="App.html">App</a>}</span></h4>
+    <h4 class="name" id="restorePrograms"><span class="type-signature"></span>restorePrograms<span class="signature">(&hellip;sources)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
     
 
     
@@ -12446,19 +11907,7 @@
 
 
 <div class="description">
-    Enable the WEBGL_compressed_texture_s3tc and WEBGL_compressed_texture_s3tc_srgb extensions, which 
-        allow the following enums to be used as texture formats:
-
-        <ul>
-          <li>PicoGL.COMPRESSED_RGB_S3TC_DXT1_EXT
-          <li>PicoGL.COMPRESSED_RGBA_S3TC_DXT1_EXT
-          <li>PicoGL.COMPRESSED_RGBA_S3TC_DXT3_EXT
-          <li>PicoGL.COMPRESSED_RGBA_S3TC_DXT5_EXT
-          <li>PicoGL.COMPRESSED_SRGB_S3TC_DXT1_EXT
-          <li>PicoGL.COMPRESSED_SRGB_ALPHA_S3TC_DXT1_EXT
-          <li>PicoGL.COMPRESSED_SRGB_ALPHA_S3TC_DXT3_EXT
-          <li>PicoGL.COMPRESSED_SRGB_ALPHA_S3TC_DXT5_EXT
-        </ul>
+    Restore several programs after a context loss. Will do so in parallel where available.
 </div>
 
 
@@ -12467,6 +11916,67 @@
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>sources</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Program.html">Program</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                    &lt;repeatable><br>
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Variable number of programs to restore.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -12502,7 +12012,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line707">line 707</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line804">line 804</a>
     </li></ul></dd>
     
 
@@ -12529,7 +12039,7 @@
 
         
 <div class="param-desc">
-    The App object.
+    Promise that will resolve once all programs have been restored.
 </div>
 
 
@@ -12540,7 +12050,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="App.html">App</a></span>
+<span class="param-type">Promise</span>
 
 
     </dd>
@@ -12610,7 +12120,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line497">line 497</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line480">line 480</a>
     </li></ul></dd>
     
 
@@ -12718,7 +12228,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line473">line 473</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line456">line 456</a>
     </li></ul></dd>
     
 
@@ -12925,7 +12435,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line550">line 550</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line533">line 533</a>
     </li></ul></dd>
     
 
@@ -13155,7 +12665,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line570">line 570</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line553">line 553</a>
     </li></ul></dd>
     
 
@@ -13315,7 +12825,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line514">line 514</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line497">line 497</a>
     </li></ul></dd>
     
 
@@ -13498,7 +13008,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line531">line 531</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line514">line 514</a>
     </li></ul></dd>
     
 
@@ -13704,7 +13214,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line588">line 588</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line571">line 571</a>
     </li></ul></dd>
     
 
@@ -13933,7 +13443,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line607">line 607</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line590">line 590</a>
     </li></ul></dd>
     
 
@@ -14043,7 +13553,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line448">line 448</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line431">line 431</a>
     </li></ul></dd>
     
 
@@ -14269,7 +13779,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app.js.html">app.js</a>, <a href="app.js.html#line911">line 911</a>
+        <a href="app.js.html">app.js</a>, <a href="app.js.html#line677">line 677</a>
     </li></ul></dd>
     
 
@@ -14341,7 +13851,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Nov 12 2018 08:21:36 GMT-0500 (GMT-05:00)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Apr 24 2019 08:40:11 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>
